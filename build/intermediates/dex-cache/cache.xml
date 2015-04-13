@@ -2,39 +2,130 @@
 <items version="2" >
 
     <item
-        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-e7474ee9fbc6ad1afe74c5f895eaf3c30ba30668.jar" />
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\library-2.4.0-c5db02712796df55eeb8fd9806512877ad7e8c28.jar" />
     </item>
     <item
-        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.1.0\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-aa16b3cf885393ef74ba8407c65bcf20627dd05b.jar" />
+        revision="22.0.1"
+        sha1="ac307801bddb76621df8d2d96b5b378a6e615d4b">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-9f9ef6521a80b9b3af0d9115deb45268d3f76fc2.jar" />
     </item>
     <item
-        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.1.0\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-a0419754aa6ff4f4a209853d9c2494c86473f200.jar" />
+        revision="22.0.1"
+        sha1="fc2b0f606d055d1bb0ac59889be210db89278363">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-2e563994bbc3cd192c79cf920966fe31004673ff.jar" />
     </item>
     <item
-        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.1.0\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-d56ae9e56e5779bf4b794e744abb6ac9a7e78250.jar" />
+        revision="22.0.1"
+        sha1="d7f8990aabff2a7b5a3b6bcd2a8ea2a1e23c293b">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-f8aef75f85f737ff2a3901d0e84a867f3b50f1d6.jar" />
     </item>
     <item
-        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\classes.jar"
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.1.0\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
-        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-b9f21e1953643581602d6838302227adab638be9.jar" />
+        revision="22.0.1"
+        sha1="d828c72c628984cbaf8669a500726f0c0e6adb59">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-190bb741602d506b8b0bfcc6ab82878296a50e7a.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\6.1.0\63735f48b82bcd24cdd33821342428252eb1ca5a\butterknife-6.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="63735f48b82bcd24cdd33821342428252eb1ca5a">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\butterknife-6.1.0-139a5526a211f7eb6255a102d2baa57c49ec2a20.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0-37390d27b687df841885a881c4eac0c3e7dfddd7.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.4-b5e5848c18b6edfe0a992f386a6dca80fe78e491.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.squareup.dagger\dagger\1.2.0\adec009bc3b39d0cbd7ec96ef6014667a3a8f147\dagger-1.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="adec009bc3b39d0cbd7ec96ef6014667a3a8f147">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\dagger-1.2.0-f4dce2471ee3a7122a7e1ad9803703ce09ff81ec.jar" />
+    </item>
+    <item
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-e0b31112c5e4df40783688392bddd23a03f755d1.jar" />
+    </item>
+    <item
+        jar="D:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.0.0\support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\support-annotations-22.0.0-9c7f0f00a3d76e88d03ff501363eae75a59facb5.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\javax.annotation-api-1.2-45d97e275d549b842b9f5c57f99edd4e43a0a500.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.3.0\2e7bc7033dc2c8423e661224171b3133fb155b28\okhttp-2.3.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\okhttp-2.3.0-4257e08354c38158a6f4b74bbbd6a73d8dd40712.jar" />
+    </item>
+    <item
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\libs\internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\internal_impl-22.0.0-7487b88b84e47e0a3ed91cc72d035694039f1445.jar" />
+    </item>
+    <item
+        jar="D:\Project_Studio\PoemFun\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.0.0\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\classes-ab5d295d6d3c925345390add9420115c35bed7ac.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.3.0\1b355f73402020c5a0dcca58affc3ec3dfeabac1\okio-1.3.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\okio-1.3.0-d28d0ec56701ce6d9dc3a33a5b56244aa3d26fe9.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.6\ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30\otto-1.3.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ee373b6d0d6ea36a0a9b0cbabaf16be7e7fc3e30">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\otto-1.3.6-57fdc986b270df8447e7ceee8616ba4988987113.jar" />
+    </item>
+    <item
+        jar="C:\Users\CJL\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="D:\Project_Studio\PoemFun\app\build\intermediates\pre-dexed\debug\javax.inject-1-c209d3551db6201721dc61cc8ee2161a3fa0ffee.jar" />
     </item>
 
 </items>
