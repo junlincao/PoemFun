@@ -12,7 +12,7 @@ import com.cjl.poemfun.ui.activity.BaseActivity;
 import butterknife.ButterKnife;
 
 /**
- * 基本Fragment，自动注入依赖，不需要重写onCreateView,重写onViewCreated 完成初始化
+ * 基本Fragment，自动注入依赖，不需要重写onCreateView。重写onViewCreated 完成初始化
  * <p>
  * attach activity 必须为BaseActivity子类
  *
@@ -31,14 +31,10 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(getFragmentLayout(), container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(getFragmentLayout(), container, false);
         //ButterKnife 注解处理
         ButterKnife.inject(this, view);
+        return view;
     }
 
     @Override

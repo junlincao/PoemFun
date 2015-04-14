@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/navigation_drawer"
-        android:name="com.cjl.poemfun.ui.fragment.NavigationDrawerFragment"
+        android:name="com.cjl.poemfun.ui.fragment.NavDrawerFragment"
         android:layout_width="304dp"
         android:layout_height="match_parent"
         android:layout_gravity="left" />

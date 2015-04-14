@@ -15,7 +15,7 @@ import dagger.ObjectGraph;
 
 /**
  * BaseActivity,
- * <p/>
+ * <p>
  * 使用Dagger依赖注入，使用ButterKnife替换ButterKnife注解字段
  *
  * @author CJL
@@ -39,9 +39,7 @@ public abstract class BaseActivity extends ActionBarActivity {
      * @param object to inject.
      */
     public void inject(Object object) {
-        if (getModules() != null) {
-            activityScopeGraph.inject(object);
-        }
+        activityScopeGraph.inject(object);
     }
 
     /**
@@ -49,7 +47,6 @@ public abstract class BaseActivity extends ActionBarActivity {
      *
      * @return 依赖Modules列表
      */
-    @Nullable
     protected abstract List<Object> getModules();
 
     /**
@@ -65,9 +62,6 @@ public abstract class BaseActivity extends ActionBarActivity {
     private void injectDependencies() {
         AppApplication tvShowsApplication = (AppApplication) getApplication();
         List<Object> activityScopeModules = getModules();
-        if (activityScopeModules == null) {
-            activityScopeModules = new LinkedList<>();
-        }
         activityScopeModules.add(new ActivityModule(this));
         activityScopeGraph = tvShowsApplication.plus(activityScopeModules);
         inject(this);
