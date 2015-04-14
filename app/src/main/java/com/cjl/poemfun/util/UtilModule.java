@@ -5,17 +5,21 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.cjl.poemfun.ui.activity.MainActivity;
+import com.cjl.poemfun.ui.fragment.NavDrawerFragment;
+import com.cjl.poemfun.ui.presenter.NavDrawerPresenter;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
 /**
- * com.cjl.poemfun.util
+ * UtilModule
  *
  * @author CJL
  * @since 2015-04-13
  */
-@Module(library = true, injects = {MainActivity.class})
+@Module(library = true)
 public class UtilModule {
 
 //    @Provides
@@ -26,4 +30,5 @@ public class UtilModule {
 //    public static SharedPreferences getSharedPreference(Context ctx) {
 //        return PreferenceManager.getDefaultSharedPreferences(ctx);
 //    }
+
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import com.cjl.poemfun.AppApplication;
 import com.cjl.poemfun.domain.PoemFunModule;
 import com.cjl.poemfun.executor.ExecutorModul;
+import com.cjl.poemfun.util.UtilModule;
 import com.squareup.otto.Bus;
 
 import javax.inject.Singleton;
@@ -21,7 +22,7 @@ import dagger.Provides;
  * @author CJL
  * @since 2015-04-13
  */
-@Module(includes = {ExecutorModul.class, PoemFunModule.class},
+@Module(includes = {ExecutorModul.class, PoemFunModule.class, UtilModule.class},
         injects = {AppApplication.class},
         library = true)
 public class RootModule {

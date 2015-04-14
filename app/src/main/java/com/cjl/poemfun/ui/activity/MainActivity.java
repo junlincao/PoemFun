@@ -5,8 +5,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.TypedValue;
 
 import com.cjl.poemfun.R;
+import com.cjl.poemfun.ui.UIModule;
 import com.cjl.poemfun.ui.fragment.NavDrawerFragment;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.InjectView;
@@ -39,6 +41,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected List<Object> getModules() {
-        return null;
+        LinkedList<Object> modules = new LinkedList<>();
+        modules.add(new UIModule());
+        return modules;
     }
 }

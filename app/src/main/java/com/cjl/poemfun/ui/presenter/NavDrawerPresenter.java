@@ -2,6 +2,8 @@ package com.cjl.poemfun.ui.presenter;
 
 import android.content.Context;
 
+import javax.inject.Inject;
+
 /**
  * 侧边栏管理
  *
@@ -20,7 +22,8 @@ public class NavDrawerPresenter {
 
     private NavDrawerView mView;
 
-    public NavDrawerPresenter() {
+    @Inject
+    NavDrawerPresenter() {
 
     }
 
@@ -33,5 +36,4 @@ public class NavDrawerPresenter {
         mView.close();
     }
 
-    public void onDraw
 }

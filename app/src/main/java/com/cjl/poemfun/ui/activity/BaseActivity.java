@@ -28,8 +28,8 @@ public abstract class BaseActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutRes());
         injectDependencies();
+        setContentView(getLayoutRes());
         injectViews();
     }
 
@@ -60,10 +60,10 @@ public abstract class BaseActivity extends ActionBarActivity {
      * Dagger 添加注入依赖需要的Module
      */
     private void injectDependencies() {
-        AppApplication tvShowsApplication = (AppApplication) getApplication();
+        AppApplication application = (AppApplication) getApplication();
         List<Object> activityScopeModules = getModules();
         activityScopeModules.add(new ActivityModule(this));
-        activityScopeGraph = tvShowsApplication.plus(activityScopeModules);
+        activityScopeGraph = application.plus(activityScopeModules);
         inject(this);
     }
 
