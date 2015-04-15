@@ -1,22 +1,25 @@
 package com.cjl.poemfun.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.TypedValue;
 
 import com.cjl.poemfun.R;
-import com.cjl.poemfun.ui.UIModule;
 import com.cjl.poemfun.ui.fragment.NavDrawerFragment;
+import com.cjl.poemfun.ui.presenter.MainPresenter;
+import com.cjl.poemfun.util.PreferenceUtil;
 
-import java.util.LinkedList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.InjectView;
 
+public class MainActivity extends BaseActivity implements MainPresenter.MainView {
 
-public class MainActivity extends BaseActivity {
-
-    private NavDrawerFragment mNavDrawerFragment;
+    @Inject
+    MainPresenter mPresenter;
 
     @InjectView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
@@ -25,13 +28,21 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mNavDrawerFragment = (NavDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        NavDrawerFragment mNavDrawerFragment = (NavDrawerFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.navigation_drawer);
 
         TypedValue sTypedValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.colorPrimaryDark, sTypedValue, true);
         mDrawerLayout.setStatusBarBackgroundColor(sTypedValue.data);
         mNavDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);
+
+        mPresenter.setView(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPresenter.setView(null);
     }
 
     @Override
@@ -40,9 +51,22 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected List<Object> getModules() {
-        LinkedList<Object> modules = new LinkedList<>();
-        modules.add(new UIModule());
-        return modules;
+    protected List<Object> getExtraModules() {
+        return null;
+    }
+
+    @Override
+    public void replaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+    }
+
+    @Inject
+    PreferenceUtil preferenceUtil;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        preferenceUtil.getUserLearnedDrawer();
     }
 }

@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 
-import com.cjl.poemfun.di.ActivityModule;
 import com.cjl.poemfun.AppApplication;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -15,13 +13,17 @@ import dagger.ObjectGraph;
 
 /**
  * BaseActivity,
- * <p>
+ * <p/>
  * 使用Dagger依赖注入，使用ButterKnife替换ButterKnife注解字段
  *
  * @author CJL
  * @since 2015-04-13
  */
 public abstract class BaseActivity extends ActionBarActivity {
+    /**
+     * log tag *
+     */
+    protected String TAG = getClass().getSimpleName();
 
     private ObjectGraph activityScopeGraph;
 
@@ -39,15 +41,22 @@ public abstract class BaseActivity extends ActionBarActivity {
      * @param object to inject.
      */
     public void inject(Object object) {
-        activityScopeGraph.inject(object);
+        if (activityScopeGraph != null) {
+            activityScopeGraph.inject(object);
+        } else {
+            AppApplication application = (AppApplication) getApplication();
+            application.inject(object);
+        }
     }
 
     /**
-     * 提供当前activity需要的依赖Modules（包括用到的Fragment）
+     * 提供除{@link AppApplication} 中 ObjectGraph.create 提供的modules以外的
+     * 当前activity需要的依赖Modules（包括用到的Fragment）
      *
      * @return 依赖Modules列表
      */
-    protected abstract List<Object> getModules();
+    @Nullable
+    protected abstract List<Object> getExtraModules();
 
     /**
      * 获取布局资源ID
@@ -61,10 +70,13 @@ public abstract class BaseActivity extends ActionBarActivity {
      */
     private void injectDependencies() {
         AppApplication application = (AppApplication) getApplication();
-        List<Object> activityScopeModules = getModules();
-        activityScopeModules.add(new ActivityModule(this));
-        activityScopeGraph = application.plus(activityScopeModules);
-        inject(this);
+        List<Object> modules = getExtraModules();
+        if (modules != null) {
+            activityScopeGraph = application.plus(modules);
+            inject(this);
+        } else {
+            application.inject(this);
+        }
     }
 
     /**

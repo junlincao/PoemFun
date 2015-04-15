@@ -16,6 +16,7 @@ import android.widget.ListView;
 
 import com.cjl.poemfun.R;
 import com.cjl.poemfun.ui.presenter.NavDrawerPresenter;
+import com.cjl.poemfun.util.PreferenceUtil;
 
 import javax.inject.Inject;
 
@@ -40,6 +41,8 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
 
     @Inject
     NavDrawerPresenter mPresenter;
+    @Inject
+    PreferenceUtil mPreferenceUtil;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -59,8 +62,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+        mUserLearnedDrawer = mPreferenceUtil.getUserLearnedDrawer();
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -96,9 +98,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     @OnItemClick(R.id.list)
     void onItemClick(int position) {
         mCurrentSelectedPosition = position;
-        if (mDrawerListView != null) {
-            mDrawerListView.setItemChecked(position, true);
-        }
+        mDrawerListView.setItemChecked(position, true);
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
@@ -150,9 +150,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
 
                 if (!mUserLearnedDrawer) {
                     mUserLearnedDrawer = true;
-                    SharedPreferences sp = PreferenceManager
-                            .getDefaultSharedPreferences(getActivity());
-                    sp.edit().putBoolean(PREF_USER_LEARNED_DRAWER, true).apply();
+                    mPreferenceUtil.setUserLearnedDrawer(true);
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
@@ -163,12 +161,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
             mDrawerLayout.openDrawer(mFragmentContainerView);
         }
 
-        mDrawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mDrawerToggle.syncState();
-            }
-        });
+        mDrawerToggle.syncState();
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mHasSetup = true;

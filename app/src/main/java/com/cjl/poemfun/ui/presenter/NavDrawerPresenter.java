@@ -5,7 +5,7 @@ import android.content.Context;
 import javax.inject.Inject;
 
 /**
- * 侧边栏管理
+ * 侧边栏管理 (NavDrawerFragment)
  *
  * @author CJL
  * @since 2015-04-14
@@ -24,7 +24,6 @@ public class NavDrawerPresenter {
 
     @Inject
     NavDrawerPresenter() {
-
     }
 
 

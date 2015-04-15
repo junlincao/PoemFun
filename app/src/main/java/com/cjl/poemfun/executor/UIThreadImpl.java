@@ -14,7 +14,6 @@ import javax.inject.Inject;
 public class UIThreadImpl implements UIThread {
     private Handler mHandler;
 
-    @Inject
     UIThreadImpl() {
         mHandler = new Handler(Looper.getMainLooper());
     }

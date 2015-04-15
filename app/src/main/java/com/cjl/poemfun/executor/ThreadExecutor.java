@@ -20,7 +20,7 @@ public class ThreadExecutor implements Executor {
     private static final BlockingQueue<Runnable> WORK_QUEUE = new LinkedBlockingQueue<Runnable>();
 
     private ThreadPoolExecutor threadPoolExecutor;
-    @Inject
+
     public ThreadExecutor() {
         threadPoolExecutor = new ThreadPoolExecutor(CORE_POOL_SIZE, MAX_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS,
                 WORK_QUEUE);

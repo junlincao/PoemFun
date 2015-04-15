@@ -10,8 +10,8 @@ import dagger.Module;
  * @author CJL
  * @since 2015-04-13
  */
-@Module(library = true, complete = false)
-public class PoemFunModule {
+@Module(library = true)
+public class DomainModule {
 
     //TODO
 
