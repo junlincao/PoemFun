@@ -1,6 +1,13 @@
 package com.cjl.poemfun.ui.presenter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v4.app.Fragment;
+
+import com.cjl.poemfun.ui.fragment.DaySuggestFragment;
+import com.cjl.poemfun.ui.fragment.HallCenterFragment;
+import com.cjl.poemfun.util.BusEvents;
 
 import javax.inject.Inject;
 
@@ -18,6 +25,15 @@ public class NavDrawerPresenter {
         void close();
 
         Context getContext();
+
+        /**
+         * send eventbus event
+         *
+         * @param event event
+         */
+        void sendEvent(Object event);
+
+        void setUserBackground(int color);
     }
 
     private NavDrawerView mView;
@@ -26,12 +42,30 @@ public class NavDrawerPresenter {
     NavDrawerPresenter() {
     }
 
-
     public void setView(NavDrawerView view) {
         this.mView = view;
     }
 
-    public void onNavDrawerItemClick(int position) {
+    public void onFunctionItemClick(int position) {
+        // jump to function list R.array.function_list
+        Fragment fragment;
+        switch (position) {
+            case 0:
+                fragment = new DaySuggestFragment();
+                break;
+            case 1:
+                fragment = new HallCenterFragment();
+                break;
+            default:
+                throw new IllegalArgumentException("not implement");
+        }
+
+        mView.sendEvent(new BusEvents.NavDrawerItemClickEvent(fragment));
+        mView.close();
+    }
+
+    public void onSetupItemClick(int position) {
+        // jump to setup list R.array.setup_list
         mView.close();
     }
 

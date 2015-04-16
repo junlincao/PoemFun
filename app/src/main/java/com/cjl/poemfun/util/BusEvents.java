@@ -13,6 +13,10 @@ public class BusEvents {
     public static class NavDrawerItemClickEvent {
         private Fragment toFragment;
 
+        public NavDrawerItemClickEvent(Fragment toFragment){
+            this.toFragment = toFragment;
+        }
+
         public Fragment getToFragment() {
             return toFragment;
         }

@@ -10,6 +10,7 @@ import com.cjl.poemfun.domain.DomainModule;
 import com.cjl.poemfun.executor.ExecutorModul;
 import com.cjl.poemfun.ui.UIModule;
 import com.cjl.poemfun.util.UtilModule;
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import dagger.ObjectGraph;
 
@@ -36,6 +37,7 @@ public class AppApplication extends Application {
                 new UIModule()
         };
 
+        Fresco.initialize(this);
         objectGraph = ObjectGraph.create(modules);
         objectGraph.injectStatics();
     }

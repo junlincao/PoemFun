@@ -31,7 +31,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(getFragmentLayout(), container, false);
+        View view = inflater.inflate(getFragmentLayoutResId(), container, false);
         //ButterKnife 注解处理
         ButterKnife.inject(this, view);
         return view;
@@ -46,5 +46,5 @@ public abstract class BaseFragment extends Fragment {
     /**
      * onCreateView 返回的View的布局id
      */
-    protected abstract int getFragmentLayout();
+    protected abstract int getFragmentLayoutResId();
 }

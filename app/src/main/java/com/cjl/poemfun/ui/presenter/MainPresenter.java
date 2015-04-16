@@ -2,6 +2,7 @@ package com.cjl.poemfun.ui.presenter;
 
 import android.support.v4.app.Fragment;
 
+import com.cjl.poemfun.ui.fragment.DaySuggestFragment;
 import com.cjl.poemfun.util.BusEvents;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -36,7 +37,13 @@ public class MainPresenter {
             bus.unregister(this);
         } else {
             bus.register(this);
+            //显示默认的fragment
+            mView.replaceFragment(getDefaultFunctionFragment());
         }
+    }
+
+    public Fragment getDefaultFunctionFragment() {
+        return new DaySuggestFragment();
     }
 
     @Subscribe

@@ -2,13 +2,15 @@ package com.cjl.poemfun.ui.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,12 @@ import android.widget.ListView;
 import com.cjl.poemfun.R;
 import com.cjl.poemfun.ui.presenter.NavDrawerPresenter;
 import com.cjl.poemfun.util.PreferenceUtil;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.image.ImageInfo;
+import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
 
@@ -27,7 +35,6 @@ import butterknife.OnItemClick;
  * navigation drawer Fragment
  */
 public class NavDrawerFragment extends BaseFragment implements NavDrawerPresenter.NavDrawerView {
-
     /**
      * Remember the position of the selected item.
      */
@@ -43,11 +50,20 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     NavDrawerPresenter mPresenter;
     @Inject
     PreferenceUtil mPreferenceUtil;
+    @Inject
+    Bus bus;
+
+    @InjectView(R.id.function_list)
+    ListView mFunctionList;
+    @InjectView(R.id.setup_list)
+    ListView mSetupList;
+    @InjectView(R.id.user_container)
+    View mUserContainer;
+    @InjectView(R.id.user_image)
+    SimpleDraweeView mUserImg;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    @InjectView(R.id.list)
-    ListView mDrawerListView;
     private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 0;
@@ -81,33 +97,39 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
+        String[] functionList = getResources().getStringArray(R.array.function_list);
+        String[] setupList = getResources().getStringArray(R.array.setup_list);
+
+        mFunctionList.setAdapter(new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                new String[]{
-                        getString(R.string.title_section1),
-                        getString(R.string.title_section2),
-                        getString(R.string.title_section3),
-                }));
-        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+                android.R.id.text1, functionList));
+        mFunctionList.setItemChecked(mCurrentSelectedPosition, true);
+
+        mSetupList.setAdapter(new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_activated_1,
+                android.R.id.text1, setupList));
 
         setUp();
+
+        startTest();
     }
 
-    @OnItemClick(R.id.list)
-    void onItemClick(int position) {
+    @OnItemClick(R.id.function_list)
+    void onClickFunction(int position) {
         mCurrentSelectedPosition = position;
-        mDrawerListView.setItemChecked(position, true);
-        if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
-        }
+        mFunctionList.setItemChecked(position, true);
 
-        mPresenter.onNavDrawerItemClick(position);
+        mPresenter.onFunctionItemClick(position);
+    }
+
+    @OnItemClick(R.id.setup_list)
+    void onSetupItemClick(int position) {
+        mPresenter.onSetupItemClick(position);
     }
 
     @Override
-    protected int getFragmentLayout() {
+    protected int getFragmentLayoutResId() {
         return R.layout.fragment_nav_drawer;
     }
 
@@ -190,6 +212,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+
     }
 
     @Override
@@ -208,4 +231,47 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public Context getContext() {
         return getActivity();
     }
+
+    @Override
+    public void sendEvent(Object event) {
+        bus.post(event);
+    }
+
+    @Override
+    public void setUserBackground(int color) {
+        mUserContainer.setBackgroundColor(color);
+    }
+
+
+
+    private void startTest() {
+        final Drawable def = mUserImg.getTopLevelDrawable();
+
+        DraweeController dc = Fresco.newDraweeControllerBuilder().setOldController(mUserImg.getController())
+                .setUri(Uri.parse("http://192.168.2.170:8080/data/t1.png"))
+                .setControllerListener(new BaseControllerListener<ImageInfo>() {
+                    @Override
+                    public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
+                        Log.d("---", "onFinalImageSet->id=" + id + "; w=" + imageInfo.getWidth() + "; h=" + imageInfo.getHeight());
+
+                        Drawable dNow = mUserImg.getTopLevelDrawable();
+
+                        Log.d("---", "equals=" + (def == dNow));
+
+
+                        mUserImg.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Drawable dNow = mUserImg.getTopLevelDrawable();
+
+                                Log.d("---", "delayed equals=" + (def == dNow));
+                            }
+                        }, 200);
+                    }
+                })
+                .build();
+        mUserImg.setController(dc);
+
+    }
+
 }
