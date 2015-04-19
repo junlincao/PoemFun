@@ -1,7 +1,5 @@
 package com.cjl.poemfun;
 
-import java.util.List;
-
 import android.app.Application;
 import android.util.Log;
 
@@ -11,6 +9,11 @@ import com.cjl.poemfun.executor.ExecutorModul;
 import com.cjl.poemfun.ui.UIModule;
 import com.cjl.poemfun.util.UtilModule;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import dagger.ObjectGraph;
 
@@ -24,6 +27,8 @@ import dagger.ObjectGraph;
  */
 public class AppApplication extends Application {
     ObjectGraph objectGraph;
+    @Inject
+    ImagePipelineConfig mImagePipelineConfig;
 
     @Override
     public void onCreate() {
@@ -37,9 +42,11 @@ public class AppApplication extends Application {
                 new UIModule()
         };
 
-        Fresco.initialize(this);
         objectGraph = ObjectGraph.create(modules);
         objectGraph.injectStatics();
+        objectGraph.inject(this);
+
+        Fresco.initialize(this, mImagePipelineConfig);
     }
 
     /**
