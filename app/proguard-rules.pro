@@ -21,6 +21,7 @@
     @com.squareup.otto.Produce public *;
 }
 
+-keep class com.cjl.poetryfan.proto.** { *; }
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewInjector { *; }

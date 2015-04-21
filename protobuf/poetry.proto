@@ -1,0 +1,19 @@
+package poetry;
+
+
+option java_package = "com.cjl.poetryfan.proto";
+option java_outer_classname = "poetryProto";
+
+message poetry{
+	optional string author = 1;
+	optional string birth = 2;
+	optional string title = 3;
+	optional string content = 4;
+	optional string head_img = 5;
+}
+
+message day_suggest{
+	required int32 id = 1;
+	required string date = 2;
+	required poetry poetry = 3;
+}

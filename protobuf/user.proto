@@ -1,0 +1,11 @@
+package user;
+
+
+option java_package = "com.cjl.poetryfan.proto";
+option java_outer_classname = "userProto";
+
+message user{
+	optional int32 id = 1;
+	required string name = 2;
+	optional string head_img = 3;
+}

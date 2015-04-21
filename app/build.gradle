@@ -69,6 +69,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.1.0+'
     compile "com.facebook.fresco:fresco:0.3.0+"
     compile "com.facebook.fresco:imagepipeline-okhttp:0.3.0+"
+    compile 'com.google.protobuf:protobuf-java:2.6.1+'
 }
 
 
