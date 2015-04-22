@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PoemFun</string>
+    <string name="app_name">大诗歌</string>
 
     <string-array name="function_list">
         <item>每日推荐</item>

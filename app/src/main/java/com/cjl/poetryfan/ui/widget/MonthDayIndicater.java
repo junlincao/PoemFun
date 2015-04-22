@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Build;
-import android.text.StaticLayout;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -23,27 +22,13 @@ import java.util.Date;
 public class MonthDayIndicater extends View {
 
     Calendar mCalendar = Calendar.getInstance();
-    private int mNowMonth;
-    private int mNowDay;
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int mCircleColor = 0xffff9727;
     private int mTextColor = Color.WHITE;
     private int mMonthTextSize;
     private int mDayTextSize;
     private Rect mRect = new Rect();
-
-    private final int mMonthCount = 12;
     private float mOffset = 0;
-
-    /**
-     * 本月总天数*
-     */
-    private int mDayCount;
-    /**
-     * 本月的前一个月总天数*
-     */
-    private int mLastMonthDayCount;
-
 
     public MonthDayIndicater(Context context) {
         super(context);
@@ -69,22 +54,20 @@ public class MonthDayIndicater extends View {
     void init(Context ctx) {
         float density = ctx.getResources().getDisplayMetrics().density;
 
-        mMonthTextSize = (int) (density * 18 + .5);
+        mMonthTextSize = (int) (density * 22 + .5);
         mDayTextSize = (int) (density * 14 + .5);
 
-        resetDate(new Date());
+        setDate(new Date());
     }
 
-    public void resetDate(Date d) {
+    /**
+     * 设置当前显示页的日期
+     *
+     * @param d 日期
+     */
+    public void setDate(Date d) {
         mCalendar.setTime(d);
-
-        mNowMonth = mCalendar.get(Calendar.MONTH) + 1;
-        mNowDay = mCalendar.get(Calendar.DAY_OF_MONTH);
-
-        mDayCount = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        mCalendar.add(Calendar.MONTH, -1);
-        mLastMonthDayCount = mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
+        invalidate();
     }
 
     public void setCircleColor(int color) {
@@ -104,6 +87,16 @@ public class MonthDayIndicater extends View {
         invalidate();
     }
 
+    /**
+     * 设置滚动偏移比例
+     *
+     * @param pos 范围(-1, 1),日期减少时应为大于0 类同与ViewPager.PageTransformer
+     *            transformPage 第二个参数
+     */
+    public void setScrollPos(float pos) {
+        mOffset = pos;
+        invalidate();
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -120,19 +113,50 @@ public class MonthDayIndicater extends View {
         mPaint.setColor(mTextColor);
         canvas.drawLine(centerX - dividerXL, centerY - dividerXL, centerX + dividerXL, centerY + dividerXL, mPaint);
 
-//        mRect.set();
+        final long savedTime = mCalendar.getTimeInMillis(); // 保存日历时间
+        final int dayNow = mCalendar.get(Calendar.DAY_OF_MONTH);
+        final int monthNow = mCalendar.get(Calendar.MONTH) + 1;
 
+        mCalendar.add(Calendar.DAY_OF_MONTH, mOffset >= 0 ? -1 : 1);
+        final int toDay = mCalendar.get(Calendar.DAY_OF_MONTH);
+        final int toMonth = mCalendar.get(Calendar.MONTH) + 1;
+
+        final int padding = r / 4;
+        mPaint.setTextSize(mDayTextSize);
+        mRect.set(centerX - r + padding, centerY - padding, centerX, centerY + r - padding);
+        drawText(dayNow, toDay, mRect, mOffset, canvas, mPaint);
+
+        mPaint.setTextSize(mMonthTextSize);
+        mRect.set(centerX, centerY - r + padding, centerX + r - padding, centerY + padding);
+        drawText(monthNow, toMonth, mRect, monthNow == toMonth ? 0 : mOffset, canvas, mPaint);
+
+        mCalendar.setTimeInMillis(savedTime); // 恢复日历时间
     }
 
-    private void drawTextInRect(String t1, String t2, Rect r, float mOffset, Canvas c, Paint p){
-        int t1Width = (int) p.measureText(t1);
-        int t2Width = (int) p.measureText(t2);
+    private void drawText(int numCenter, int numEdge, Rect r, float mOffset, Canvas c, Paint p) {
+        String tCenter = String.valueOf(numCenter);
+        String tEdge = String.valueOf(numEdge);
+
+        int tCenterWidth = (int) p.measureText(tCenter);
+        int tEdgeWidth = (int) p.measureText(tEdge);
 
         c.save();
         c.clipRect(r);
 
+        Paint.FontMetrics fm = p.getFontMetrics();
+        float y = r.top + (r.bottom - r.top - fm.bottom + fm.top) / 2 - fm.top;
 
+        int scroll = (int) ((r.width() + tEdgeWidth) / 2f * mOffset);
+        float xCenter = r.centerX() - tCenterWidth / 2 + scroll;
+        float xEdge;
+        if (mOffset >= 0) {
+            xEdge = r.left - tEdgeWidth + scroll;
+        } else {
+            xEdge = r.right + scroll;
+        }
 
+        c.drawText(tCenter, xCenter, y, p);
+        c.drawText(tEdge, xEdge, y, p);
         c.restore();
     }
 }
