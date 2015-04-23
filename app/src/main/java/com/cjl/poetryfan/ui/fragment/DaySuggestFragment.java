@@ -1,5 +1,8 @@
 package com.cjl.poetryfan.ui.fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 
 import com.cjl.poetryfan.R;
 import com.cjl.poetryfan.ui.presenter.DaySuggestPresenter;
+import com.cjl.poetryfan.ui.widget.BookLikePager;
 import com.cjl.poetryfan.ui.widget.MonthDayIndicater;
 
 import java.util.Calendar;
@@ -41,7 +45,7 @@ public class DaySuggestFragment extends BaseFragment {
     }
 
     @InjectView(R.id.vp)
-    ViewPager mViewPager;
+    BookLikePager mViewPager;
     @InjectView(R.id.indicate)
     MonthDayIndicater mIndicater;
 
@@ -64,36 +68,8 @@ public class DaySuggestFragment extends BaseFragment {
         ActionBar mActionBar = activity.getSupportActionBar();
         mActionBar.setDisplayHomeAsUpEnabled(true);
 
-
-
-        mViewPager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return 40;
-            }
-
-            @Override
-            public boolean isViewFromObject(View view, Object o) {
-                return view == o;
-            }
-
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                TextView tv = new TextView(getActivity());
-                tv.setText("" + position);
-                tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
-                tv.setTag(position);
-                container.addView(tv);
-                return tv;
-            }
-
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                View v = (View) object;
-                container.removeView(v);
-            }
-        });
-        mViewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+        mViewPager.setAdapter(new MPagerAdapter());
+        mViewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View view, float v) {
                 int id = (int) view.getTag();
@@ -116,7 +92,8 @@ public class DaySuggestFragment extends BaseFragment {
                 c.setTime(new Date());
                 c.add(Calendar.DAY_OF_MONTH, i);
                 mIndicater.setDate(c.getTime());
-                Log.d("---", "onPageSelected");
+
+                Log.d("---", "0->1->2->onPageSelected");
             }
 
             @Override
@@ -126,5 +103,45 @@ public class DaySuggestFragment extends BaseFragment {
         });
     }
 
+
+    private class MPagerAdapter extends PagerAdapter implements BookLikePager.IBookLikePagerAdapter{
+
+        @Override
+        public int getPositionByItemView(View itemView) {
+            return (int) itemView.getTag();
+        }
+
+        @Override
+        public Drawable getItemViewBackground() {
+            return new ColorDrawable(Color.TRANSPARENT);
+        }
+
+        @Override
+        public int getCount() {
+            return 40;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object o) {
+            return view == o;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            TextView tv = new TextView(getActivity());
+            tv.setText("" + position);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 400);
+            tv.setTag(position);
+            container.addView(tv);
+            tv.setBackgroundColor(0x77777777);
+            return tv;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            View v = (View) object;
+            container.removeView(v);
+        }
+    }
 
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,12 +41,6 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
      */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
-    /**
-     * Per the design guidelines, you should show the drawer on launch until the user manually
-     * expands it. This shared preference tracks this.
-     */
-    private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
-
     @Inject
     NavDrawerPresenter mPresenter;
     @Inject
@@ -64,12 +59,10 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
-    private boolean mHasSetup;
 
     public NavDrawerFragment() {
     }
@@ -109,10 +102,6 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
         mSetupList.setAdapter(new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1, setupList));
-
-        setUp();
-
-        startTest();
     }
 
     @OnItemClick(R.id.function_list)
@@ -139,19 +128,12 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
      * @param fragmentId   The android:id of this fragment in its activity's layout.
      * @param drawerLayout The DrawerLayout containing this fragment's UI.
      */
-    public void setUp(int fragmentId, DrawerLayout drawerLayout) {
-        mFragmentContainerView = getActivity().findViewById(fragmentId);
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
+        View mFragmentContainerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
-        setUp();
-    }
-
-    private void setUp() {
-        if (!isAdded() || mFragmentContainerView == null || mHasSetup) {
-            return;
-        }
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mDrawerToggle = new ActionBarDrawerToggle(
-                getActivity(), mDrawerLayout,
+                getActivity(), mDrawerLayout, toolbar,
                 R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close) {
             @Override
@@ -161,6 +143,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
                     return;
                 }
                 getActivity().supportInvalidateOptionsMenu();
+                syncState();
             }
 
             @Override
@@ -176,6 +159,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
+                syncState();
             }
         };
 
@@ -186,7 +170,6 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
         mDrawerToggle.syncState();
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mHasSetup = true;
     }
 
     @Override
@@ -241,37 +224,4 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public void setUserBackground(int color) {
         mUserContainer.setBackgroundColor(color);
     }
-
-
-
-    private void startTest() {
-        final Drawable def = mUserImg.getTopLevelDrawable();
-
-        DraweeController dc = Fresco.newDraweeControllerBuilder().setOldController(mUserImg.getController())
-                .setUri(Uri.parse("http://192.168.2.170:8080/data/t1.png"))
-                .setControllerListener(new BaseControllerListener<ImageInfo>() {
-                    @Override
-                    public void onFinalImageSet(String id, ImageInfo imageInfo, Animatable animatable) {
-                        Log.d("---", "onFinalImageSet->id=" + id + "; w=" + imageInfo.getWidth() + "; h=" + imageInfo.getHeight());
-
-                        Drawable dNow = mUserImg.getTopLevelDrawable();
-
-                        Log.d("---", "equals=" + (def == dNow));
-
-
-                        mUserImg.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Drawable dNow = mUserImg.getTopLevelDrawable();
-
-                                Log.d("---", "delayed equals=" + (def == dNow));
-                            }
-                        }, 200);
-                    }
-                })
-                .build();
-        mUserImg.setController(dc);
-
-    }
-
 }

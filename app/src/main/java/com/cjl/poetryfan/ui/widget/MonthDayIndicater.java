@@ -137,8 +137,8 @@ public class MonthDayIndicater extends View {
         String tCenter = String.valueOf(numCenter);
         String tEdge = String.valueOf(numEdge);
 
-        int tCenterWidth = (int) p.measureText(tCenter);
-        int tEdgeWidth = (int) p.measureText(tEdge);
+        float tCenterWidth = p.measureText(tCenter);
+        float tEdgeWidth = p.measureText(tEdge);
 
         c.save();
         c.clipRect(r);
@@ -146,7 +146,7 @@ public class MonthDayIndicater extends View {
         Paint.FontMetrics fm = p.getFontMetrics();
         float y = r.top + (r.bottom - r.top - fm.bottom + fm.top) / 2 - fm.top;
 
-        int scroll = (int) ((r.width() + tEdgeWidth) / 2f * mOffset);
+        int scroll = (int) ((r.width() + tEdgeWidth) / 2 * mOffset);
         float xCenter = r.centerX() - tCenterWidth / 2 + scroll;
         float xEdge;
         if (mOffset >= 0) {
