@@ -88,10 +88,10 @@ public class DaySuggestFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int i) {
-                Calendar c = Calendar.getInstance();
-                c.setTime(new Date());
-                c.add(Calendar.DAY_OF_MONTH, i);
-                mIndicater.setDate(c.getTime());
+//                Calendar c = Calendar.getInstance();
+//                c.setTime(new Date());
+//                c.add(Calendar.DAY_OF_MONTH, i);
+//                mIndicater.setDate(c.getTime());
 
                 Log.d("---", "0->1->2->onPageSelected");
             }
@@ -113,12 +113,12 @@ public class DaySuggestFragment extends BaseFragment {
 
         @Override
         public Drawable getItemViewBackground() {
-            return new ColorDrawable(Color.TRANSPARENT);
+            return getResources().getDrawable(R.drawable.day_sug_card);
         }
 
         @Override
         public int getCount() {
-            return 40;
+            return 5;
         }
 
         @Override
@@ -130,10 +130,10 @@ public class DaySuggestFragment extends BaseFragment {
         public Object instantiateItem(ViewGroup container, int position) {
             TextView tv = new TextView(getActivity());
             tv.setText("" + position);
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 400);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 300);
             tv.setTag(position);
             container.addView(tv);
-            tv.setBackgroundColor(0x77777777);
+            tv.setBackgroundColor(R.drawable.day_sug_card);
             return tv;
         }
 

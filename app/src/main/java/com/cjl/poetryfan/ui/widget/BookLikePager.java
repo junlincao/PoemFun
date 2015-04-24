@@ -1,7 +1,6 @@
 package com.cjl.poetryfan.ui.widget;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
@@ -12,7 +11,7 @@ import android.view.View;
 
 /**
  * ViewPager 书页效果
- * <p>
+ * <p/>
  * 不要设置pager 的 Left and right padding
  *
  * @author CJL
@@ -22,7 +21,7 @@ public class BookLikePager extends ViewPager {
     public interface IBookLikePagerAdapter {
         /**
          * 根据ItemView 对象获取其对于在adapter中的位置
-         * <p>
+         * <p/>
          * 建议使用tag存储其位置
          *
          * @param itemView adapter 的一个itemVIew
@@ -44,7 +43,7 @@ public class BookLikePager extends ViewPager {
 
     private int mFirstOffset;
     private int mNowEdgeCount;
-    private int mItemEdgeWidth;
+    private float mItemEdgeWidth;
 
 
     public BookLikePager(Context context) {
@@ -60,7 +59,7 @@ public class BookLikePager extends ViewPager {
     private void init(Context context) {
         float density = context.getResources().getDisplayMetrics().density;
 
-        mMaxEdgeWidth = (int) (density * 15 + .5);
+        mMaxEdgeWidth = (int) (density * 25 + .5);
 
         setPageTransformer(false, null); // set the default PageTransformer
         setClipToPadding(false);
@@ -83,7 +82,7 @@ public class BookLikePager extends ViewPager {
     private void resetPadding() {
         int padding = (int) (mMaxEdgeWidth * (mMaxEdgeCount + 1) / mMaxEdgeCount / 2f);
         setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
-        mItemEdgeWidth = mMaxEdgeWidth / mMaxEdgeCount;
+        mItemEdgeWidth = mMaxEdgeWidth * 1f / mMaxEdgeCount;
     }
 
     @Override
@@ -104,6 +103,27 @@ public class BookLikePager extends ViewPager {
 //                updateState();
 //            }
 //        });
+
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("---", "mItemEdgeWidth=" + mItemEdgeWidth);
+                Log.d("---", "paddingLeft=" + getPaddingLeft());
+                logDx(0, 0);
+                logDx(0, 1);
+                logDx(0, 2);
+                logDx(1, 0);
+                logDx(1, 1);
+                logDx(1, 2);
+                logDx(2, 1);
+                logDx(2, 2);
+            }
+        }, 1000);
+    }
+
+    private void logDx(int idx, int cIdx) {
+        float x = getDefaultX(idx, cIdx);
+        Log.d("---", "idx=" + idx + "; cIdx=" + cIdx + "; x=" + x);
     }
 
     @Override
@@ -130,6 +150,7 @@ public class BookLikePager extends ViewPager {
      * @param idx    view 在adapter中的position
      */
     private void onTransformPage(View view, float offset, int idx) {
+//        Log.d("---", "iw=" + view.getWidth() + "; w=" + getWidth() + "; pl=" + getPaddingLeft() + "; pr=" + getPaddingRight());
         view.setTranslationX(calcTranslationX(idx, offset));
     }
 
@@ -139,95 +160,74 @@ public class BookLikePager extends ViewPager {
      *               屏幕右边进 1->0, 出0->1
      * @return ViewPager 偏移位置
      */
-    private int calcTranslationX(int idx, float offset) {
+    private float calcTranslationX(int idx, float offset) {
         final int cIdx = getCurrentItem();
 
-        int from, to;
-        if(offset < 0){
-            from = getDefaultX(idx - 1, cIdx);
+        float from, to;
+        if (idx == cIdx + 1 && offset >= 0 && offset < 1) {
+            from = getDefaultX(idx, cIdx + 1);
             to = getDefaultX(idx, cIdx);
-
-        } else if(offset > 0){
-            from = getDefaultX(idx, cIdx);
-            to = getDefaultX(idx + 1, cIdx);
+        } else if (idx > cIdx + 1) {
+            return -getPaddingRight();
+        } else if (idx == cIdx) {
+            if (offset <= 0) {
+                if (idx == getAdapter().getCount() - 1) {
+//                    from = getDefaultX(idx, idx);
+//                    to = from;
+                    return 0;
+                } else {
+                    from = getDefaultX(idx, cIdx);
+                    to = getDefaultX(idx, cIdx + 1);
+                }
+            } else {
+                if (idx == 0) {
+//                    from = getDefaultX(idx, idx);
+//                    to = from;
+                    return 0;
+                } else {
+                    from = getDefaultX(idx, cIdx);
+                    to = getDefaultX(idx, cIdx - 1);
+                }
+            }
+        } else if (idx == cIdx - 1 && offset <= 0 && offset > -1) {
+            from = getDefaultX(idx, cIdx - 1);
+            to = getDefaultX(idx, cIdx);
         } else {
-            from = to = 0;
+            return getPaddingLeft();
         }
-
-        int delta = (int) ((to - from) * offset);
-        int defTranslationX = -(idx - cIdx) * getWidth();
-
-
-        Log.d("---", idx + "->offset=" + offset + ";\tfrom=" + from + ";\tto=" + to + ";\tx=" + defTranslationX);
-
-        return delta + defTranslationX;
-
-
-
-
-
-
-
-
-//        if (idx > cIdx) {
-//            if (offset >= 0) {
-//                from = getDefaultX(idx - 1, cIdx);
-//                to = getDefaultX(idx, cIdx);
-//
-//            } else {
-//                from = getDefaultX(idx, cIdx);
-//                to = getDefaultX(idx - 1, cIdx);
-//            }
-//
-//        } else if (idx == cIdx) {
-//            if (offset >= 0) {
-//                from = getDefaultX(idx, cIdx);
-//                to = getDefaultX(idx, cIdx - 1);
-//            } else {
-//                from = getDefaultX(idx, cIdx - 1);
-//                to = getDefaultX(idx, cIdx);
-//            }
+        float toX = from + (to - from) * Math.abs(offset);
+        float defX = -offset * getWidth();
+        float res;
+//        if(offset <= 0){
+//            res = defX - toX;
 //        } else {
-//            if (offset >= 0) {
-//                from = getDefaultX(idx, cIdx);
-//                to = getDefaultX(idx + 1, cIdx);
-//
-//            } else {
-//                from = getDefaultX(idx + 1, cIdx);
-//                to = getDefaultX(idx, cIdx);
-//            }
-//
+            res = defX + toX;
 //        }
-//
-//        int delta = (int) ((to - from) * offset);
-//        int defTranslationX = (idx - cIdx) * getWidth();
-//
-//        return delta + defTranslationX;
+
+        Log.d("---", idx + "->offset=" + offset + ";\tfrom=" + from + ";\tto=" + to + ";\tnx=" + toX + ";\ttx=" + defX + ";\tres=" + res );
+        return res;
     }
 
     /**
-     * 获取指定页应该所处的x位置
+     * 获取指定页应该所处的x位置(pager 静止空闲状态)
      *
      * @param idx 页id
      * @param ci  当前默认页ID
      * @return 指定页x位置
      */
-    private int getDefaultX(int idx, int ci) {
+    private float getDefaultX(int idx, int ci) {
         if (idx > ci) { // 大于当前显示页，应该是在屏幕右边看不见状态
-            return getWidth();
-        } else if (idx == ci) {
-            if (idx < mMaxEdgeCount) { //小于最大页数，所有页一起居中显示，计算偏差
-                int delta = getPaddingLeft() - (idx + 1) * mItemEdgeWidth / 2;
-                return delta + (idx + 1) * mItemEdgeWidth;
-            } else { // 在最上面最右边
-                return mMaxEdgeCount * mItemEdgeWidth;
+            return getWidth() * (idx - ci);
+        } else if (ci - idx >= mMaxEdgeCount) { // 相隔超过最大页数，在屏幕左边
+            return -getWidth() * (ci - idx - mMaxEdgeCount + 1);
+        } else if (ci < mMaxEdgeCount) {//小于最大页数，所有页一起居中显示，计算偏差
+            float delta = getPaddingLeft();
+            if (ci > 0) {
+                delta -= ci * mItemEdgeWidth / 2;
             }
-        } else { // 小于当前显示页
-            if (ci - idx > mMaxEdgeCount - 1) { // 相隔超过最大页数，在屏幕左边
-                return -getWidth();
-            } else {
-                return (idx + mMaxEdgeCount - ci) * mItemEdgeWidth;
-            }
+            return delta + idx * mItemEdgeWidth;
+        } else {
+            return (mMaxEdgeCount + idx - ci) * mItemEdgeWidth;
         }
     }
 
