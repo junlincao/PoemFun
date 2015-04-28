@@ -1,11 +1,9 @@
 package com.cjl.poetryfan;
 
 import android.app.Application;
-
 import com.cjl.poetryfan.di.AppComponent;
-import com.cjl.poetryfan.di.component.DaggerAppComponent;
-import com.cjl.poetryfan.di.component.DaggerNetworkComponent;
 import com.cjl.poetryfan.di.ContextModule;
+import com.cjl.poetryfan.di.DaggerAppComponent;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
@@ -24,7 +22,6 @@ public class AppApplication extends Application {
 
         mAppComponent = DaggerAppComponent.builder()
                 .contextModule(new ContextModule(this))
-                .networkComponent(DaggerNetworkComponent.create())
                 .build();
 
         Fresco.initialize(this, mAppComponent.getFrescoConfig());

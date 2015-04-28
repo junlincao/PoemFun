@@ -4,13 +4,14 @@ import android.accounts.AccountManager;
 import android.app.AlarmManager;
 import android.content.res.AssetManager;
 import android.view.LayoutInflater;
-
-import com.cjl.poetryfan.executor.NetworkComponent;
+import com.cjl.poetryfan.util.PreferenceUtil;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
-
-import java.io.File;
-
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.otto.Bus;
 import dagger.Component;
+
+import javax.inject.Singleton;
+import java.io.File;
 
 /**
  * for application
@@ -18,8 +19,8 @@ import dagger.Component;
  * @author CJL
  * @since 2015-04-28
  */
-@AppScope
-@Component(modules = ContextModule.class, dependencies = NetworkComponent.class)
+@Singleton
+@Component(modules = ContextModule.class)
 public interface AppComponent {
 
     AccountManager getAccountManager();
@@ -34,4 +35,10 @@ public interface AppComponent {
     LayoutInflater getLayoutInflater();
 
     ImagePipelineConfig getFrescoConfig();
+
+    Bus getEventBus();
+
+    OkHttpClient getOkHttpClient();
+
+    PreferenceUtil getPreferenceUtil();
 }

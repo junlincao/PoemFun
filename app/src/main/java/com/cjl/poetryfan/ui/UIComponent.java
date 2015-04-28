@@ -1,7 +1,10 @@
 package com.cjl.poetryfan.ui;
 
 import com.cjl.poetryfan.di.AppComponent;
-
+import com.cjl.poetryfan.di.UIScope;
+import com.cjl.poetryfan.ui.presenter.DaySuggestPresenter;
+import com.cjl.poetryfan.ui.presenter.MainPresenter;
+import com.cjl.poetryfan.ui.presenter.NavDrawerPresenter;
 import dagger.Component;
 
 /**
@@ -10,7 +13,12 @@ import dagger.Component;
  * @author CJL
  * @since 2015-04-28
  */
-@Component(modules = {UIModule.class}, dependencies = {AppComponent.class})
+@UIScope
+@Component(dependencies = {AppComponent.class})
 public interface UIComponent {
+    MainPresenter getMainPresenter();
 
+    DaySuggestPresenter getDaySuggestPresenter();
+
+    NavDrawerPresenter getNavDrawerPresenter();
 }

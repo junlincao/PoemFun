@@ -5,20 +5,17 @@ import android.app.AlarmManager;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.view.LayoutInflater;
-
-
-import com.cjl.poetryfan.di.FilesDirectory;
+import com.cjl.poetryfan.util.PreferenceUtil;
 import com.facebook.common.internal.Preconditions;
 import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.squareup.okhttp.OkHttpClient;
-
-import java.io.File;
-
-import javax.inject.Singleton;
-
+import com.squareup.otto.Bus;
 import dagger.Module;
 import dagger.Provides;
+
+import javax.inject.Singleton;
+import java.io.File;
 
 /**
  * ApplicationContext Module
@@ -35,11 +32,24 @@ public class ContextModule {
     }
 
     @Provides
+    @Singleton
+    public Bus provideEventBus() {
+        return new Bus();
+    }
+
+    @Provides
+    @Singleton
+    public OkHttpClient provideOkHttpClient(){
+        return new OkHttpClient();
+    }
+
+    @Provides
     public Context provideApplicationContext() {
         return mContext;
     }
 
     @Provides
+    @Singleton
     public AccountManager provideAccountManager() {
         return AccountManager.get(mContext);
     }
@@ -51,18 +61,27 @@ public class ContextModule {
     }
 
     @Provides
+    @Singleton
     public AssetManager provideAssetManager() {
         return mContext.getAssets();
     }
 
     @Provides
+    @Singleton
     public AlarmManager provideAlarmManager() {
         return (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
     }
 
     @Provides
+    @Singleton
     public LayoutInflater provideLayoutInflater() {
         return LayoutInflater.from(mContext);
+    }
+
+    @Provides
+    @Singleton
+    public PreferenceUtil providePreferenceUtil() {
+        return new PreferenceUtil(mContext);
     }
 
     @Provides

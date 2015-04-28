@@ -12,6 +12,8 @@ import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.MainPresenter;
 
 import butterknife.InjectView;
+import com.cjl.poetryfan.util.BusEvents;
+import com.squareup.otto.Subscribe;
 
 public class MainActivity extends BaseActivity implements MainPresenter.MainView {
 
@@ -25,11 +27,24 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
         TypedValue sTypedValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.colorPrimaryDark, sTypedValue, true);
         mDrawerLayout.setStatusBarBackgroundColor(sTypedValue.data);
+
+        getAppComponent().getEventBus().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getAppComponent().getEventBus().unregister(this);
+    }
+
+    @Subscribe
+    public void onNavToFragment(BusEvents.NavDrawerItemClickEvent event) {
+        replaceFragment(event.getToFragment());
     }
 
     @Override
     public BasePresenter setupPresenter() {
-        return new MainPresenter();
+        return getUIComponent().getMainPresenter();
     }
 
     @Override

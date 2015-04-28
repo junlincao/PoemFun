@@ -1,11 +1,7 @@
 package com.cjl.poetryfan.ui.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,21 +12,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import butterknife.InjectView;
+import butterknife.OnItemClick;
 import com.cjl.poetryfan.R;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.NavDrawerPresenter;
-import com.cjl.poetryfan.util.PreferenceUtil;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.controller.BaseControllerListener;
-import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.facebook.imagepipeline.image.ImageInfo;
 import com.squareup.otto.Bus;
 
 import javax.inject.Inject;
-
-import butterknife.InjectView;
-import butterknife.OnItemClick;
 
 /**
  * navigation drawer Fragment
@@ -40,13 +30,6 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
      * Remember the position of the selected item.
      */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
-    @Inject
-    NavDrawerPresenter mPresenter;
-    @Inject
-    PreferenceUtil mPreferenceUtil;
-    @Inject
-    Bus bus;
 
     @InjectView(R.id.function_list)
     ListView mFunctionList;
@@ -71,7 +54,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mUserLearnedDrawer = mPreferenceUtil.getUserLearnedDrawer();
+        mUserLearnedDrawer = getAppComponent().getPreferenceUtil().getUserLearnedDrawer();
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -109,12 +92,17 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
         mCurrentSelectedPosition = position;
         mFunctionList.setItemChecked(position, true);
 
-        mPresenter.onFunctionItemClick(position);
+        ((NavDrawerPresenter)getPresenter()).onFunctionItemClick(position);
     }
 
     @OnItemClick(R.id.setup_list)
     void onSetupItemClick(int position) {
-        mPresenter.onSetupItemClick(position);
+        ((NavDrawerPresenter)getPresenter()).onSetupItemClick(position);
+    }
+
+    @Override
+    BasePresenter setupPresenter() {
+        return getUIComponent().getNavDrawerPresenter();
     }
 
     @Override
@@ -155,7 +143,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
 
                 if (!mUserLearnedDrawer) {
                     mUserLearnedDrawer = true;
-                    mPreferenceUtil.setUserLearnedDrawer(true);
+                    getAppComponent().getPreferenceUtil().setUserLearnedDrawer(true);
                 }
 
                 getActivity().supportInvalidateOptionsMenu(); // calls onPrepareOptionsMenu()
@@ -170,19 +158,6 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
         mDrawerToggle.syncState();
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        mPresenter.setView(this);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mPresenter.setView(null);
-        mPresenter = null;
     }
 
     @Override
@@ -217,7 +192,7 @@ public class NavDrawerFragment extends BaseFragment implements NavDrawerPresente
 
     @Override
     public void sendEvent(Object event) {
-        bus.post(event);
+        getAppComponent().getEventBus().post(event);
     }
 
     @Override

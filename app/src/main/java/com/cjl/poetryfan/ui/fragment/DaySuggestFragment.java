@@ -1,7 +1,5 @@
 package com.cjl.poetryfan.ui.fragment;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -14,18 +12,14 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import butterknife.InjectView;
 import com.cjl.poetryfan.R;
-import com.cjl.poetryfan.ui.presenter.DaySuggestPresenter;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.widget.BookLikePager;
 import com.cjl.poetryfan.ui.widget.MonthDayIndicater;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.inject.Inject;
-
-import butterknife.InjectView;
 
 /**
  * 每日推荐Fragment
@@ -35,19 +29,21 @@ import butterknife.InjectView;
  */
 public class DaySuggestFragment extends BaseFragment {
 
-    @Inject
-    DaySuggestPresenter mPresenter;
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
+    @InjectView(R.id.vp)
+    BookLikePager mViewPager;
+    @InjectView(R.id.indicate)
+    MonthDayIndicater mIndicater;
 
     public DaySuggestFragment() {
 
     }
 
-    @InjectView(R.id.vp)
-    BookLikePager mViewPager;
-    @InjectView(R.id.indicate)
-    MonthDayIndicater mIndicater;
+    @Override
+    BasePresenter setupPresenter() {
+        return getUIComponent().getDaySuggestPresenter();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,7 +77,7 @@ public class DaySuggestFragment extends BaseFragment {
         });
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             float lastPos = 0;
-                Calendar c = Calendar.getInstance();
+            Calendar c = Calendar.getInstance();
 
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -103,8 +99,7 @@ public class DaySuggestFragment extends BaseFragment {
         });
     }
 
-
-    private class MPagerAdapter extends PagerAdapter implements BookLikePager.IBookLikePagerAdapter{
+    private class MPagerAdapter extends PagerAdapter implements BookLikePager.IBookLikePagerAdapter {
 
         @Override
         public int getPositionByItemView(View itemView) {

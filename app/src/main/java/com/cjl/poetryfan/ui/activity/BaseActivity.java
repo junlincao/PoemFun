@@ -2,11 +2,16 @@ package com.cjl.poetryfan.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-
-import com.cjl.poetryfan.ui.IView;
-import com.cjl.poetryfan.ui.presenter.BasePresenter;
-
+import android.util.Log;
 import butterknife.ButterKnife;
+import com.cjl.poetryfan.AppApplication;
+import com.cjl.poetryfan.di.AppComponent;
+import com.cjl.poetryfan.di.ContextModule;
+import com.cjl.poetryfan.di.DaggerAppComponent;
+import com.cjl.poetryfan.ui.DaggerUIComponent;
+import com.cjl.poetryfan.ui.IView;
+import com.cjl.poetryfan.ui.UIComponent;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 
 /**
  * BaseActivity,
@@ -18,6 +23,8 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity<T extends BasePresenter> extends ActionBarActivity implements IView {
     private T mPresenter;
+    private UIComponent mUIComponent;
+    private AppComponent mAppComponent;
 
     /**
      * log tag *
@@ -27,6 +34,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends ActionBarAct
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAppComponent = ((AppApplication) getApplicationContext()).getAppComponent();
+        mUIComponent = DaggerUIComponent.builder().appComponent(mAppComponent).build();
+
         setContentView(getLayoutRes());
         injectViews();
 
@@ -49,6 +60,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends ActionBarAct
 
     protected T getPresenter(){
         return mPresenter;
+    }
+
+    protected UIComponent getUIComponent() {
+        return mUIComponent;
+    }
+
+    protected AppComponent getAppComponent() {
+        return mAppComponent;
     }
 
     /**

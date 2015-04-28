@@ -3,6 +3,7 @@ package com.cjl.poetryfan.ui.presenter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
+import com.cjl.poetryfan.ui.IView;
 import com.cjl.poetryfan.ui.fragment.DaySuggestFragment;
 import com.cjl.poetryfan.ui.fragment.HallCenterFragment;
 import com.cjl.poetryfan.util.BusEvents;
@@ -15,8 +16,8 @@ import javax.inject.Inject;
  * @author CJL
  * @since 2015-04-14
  */
-public class NavDrawerPresenter {
-    public interface NavDrawerView {
+public class NavDrawerPresenter extends BasePresenter<NavDrawerPresenter.NavDrawerView> {
+    public interface NavDrawerView extends IView{
         /**
          * close nav drawer*
          */
@@ -34,14 +35,9 @@ public class NavDrawerPresenter {
         void setUserBackground(int color);
     }
 
-    private NavDrawerView mView;
-
     @Inject
-    NavDrawerPresenter() {
-    }
+    public NavDrawerPresenter(){
 
-    public void setView(NavDrawerView view) {
-        this.mView = view;
     }
 
     public void onFunctionItemClick(int position) {
@@ -58,13 +54,13 @@ public class NavDrawerPresenter {
                 throw new IllegalArgumentException("not implement");
         }
 
-        mView.sendEvent(new BusEvents.NavDrawerItemClickEvent(fragment));
-        mView.close();
+        getView().sendEvent(new BusEvents.NavDrawerItemClickEvent(fragment));
+        getView().close();
     }
 
     public void onSetupItemClick(int position) {
         // jump to setup list R.array.setup_list
-        mView.close();
+        getView().close();
     }
 
 }

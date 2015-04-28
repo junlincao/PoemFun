@@ -1,6 +1,7 @@
 package com.cjl.poetryfan.ui.fragment;
 
 import com.cjl.poetryfan.R;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.HallCenterPresenter;
 
 import javax.inject.Inject;
@@ -17,6 +18,11 @@ public class HallCenterFragment extends BaseFragment {
 
     public HallCenterFragment(){
 
+    }
+
+    @Override
+    BasePresenter setupPresenter() {
+        return null;
     }
 
     @Override

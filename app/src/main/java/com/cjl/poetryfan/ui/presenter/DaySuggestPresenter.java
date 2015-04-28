@@ -16,7 +16,8 @@ public class DaySuggestPresenter extends BasePresenter<DaySuggestPresenter.DaySu
 
     }
 
-    @Inject DaySuggestPresenter(){
+    @Inject
+    public DaySuggestPresenter(){
 
     }
 

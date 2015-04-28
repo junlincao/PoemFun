@@ -25,6 +25,4 @@ public class BusEvents {
             this.toFragment = toFragment;
         }
     }
-
-
 }
