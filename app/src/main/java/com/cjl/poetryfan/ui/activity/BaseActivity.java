@@ -1,15 +1,12 @@
 package com.cjl.poetryfan.ui.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 
-import com.cjl.poetryfan.AppApplication;
-
-import java.util.List;
+import com.cjl.poetryfan.ui.IView;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 
 import butterknife.ButterKnife;
-import dagger.ObjectGraph;
 
 /**
  * BaseActivity,
@@ -19,44 +16,40 @@ import dagger.ObjectGraph;
  * @author CJL
  * @since 2015-04-13
  */
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity<T extends BasePresenter> extends ActionBarActivity implements IView {
+    private T mPresenter;
+
     /**
      * log tag *
      */
     protected String TAG = getClass().getSimpleName();
 
-    private ObjectGraph activityScopeGraph;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        injectDependencies();
         setContentView(getLayoutRes());
         injectViews();
-    }
 
-    /**
-     * Dagger 注入依赖
-     *
-     * @param object to inject.
-     */
-    public void inject(Object object) {
-        if (activityScopeGraph != null) {
-            activityScopeGraph.inject(object);
-        } else {
-            AppApplication application = (AppApplication) getApplication();
-            application.inject(object);
+        mPresenter = setupPresenter();
+        if (mPresenter != null) {
+            mPresenter.setView(this);
         }
     }
 
-    /**
-     * 提供除{@link AppApplication} 中 ObjectGraph.create 提供的modules以外的
-     * 当前activity需要的依赖Modules（包括用到的Fragment）
-     *
-     * @return 依赖Modules列表
-     */
-    @Nullable
-    protected abstract List<Object> getExtraModules();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mPresenter != null) {
+            mPresenter.setView(null);
+        }
+    }
+
+    public abstract T setupPresenter();
+
+    protected T getPresenter(){
+        return mPresenter;
+    }
 
     /**
      * 获取布局资源ID
@@ -65,24 +58,19 @@ public abstract class BaseActivity extends ActionBarActivity {
      */
     protected abstract int getLayoutRes();
 
-    /**
-     * Dagger 添加注入依赖需要的Module
-     */
-    private void injectDependencies() {
-        AppApplication application = (AppApplication) getApplication();
-        List<Object> modules = getExtraModules();
-        if (modules != null) {
-            activityScopeGraph = application.plus(modules);
-            inject(this);
-        } else {
-            application.inject(this);
-        }
-    }
 
     /**
      * ButterKnife 注解处理
      */
     private void injectViews() {
         ButterKnife.inject(this);
+    }
+
+    @Override
+    public void showLoading() {
+    }
+
+    @Override
+    public void hideLoading() {
     }
 }

@@ -1,31 +1,31 @@
 package com.cjl.poetryfan.ui.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cjl.poetryfan.ui.activity.BaseActivity;
+import com.cjl.poetryfan.ui.IView;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 
 import butterknife.ButterKnife;
 
 /**
  * 基本Fragment，自动注入依赖，不需要重写onCreateView。重写onViewCreated 完成初始化
- * <p>
+ * <p/>
  * attach activity 必须为BaseActivity子类
  *
  * @author CJL
  * @since 2015-04-13
  */
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements IView {
+    private T mPresenter;
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        //依赖注入
-        ((BaseActivity) getActivity()).inject(this);
+    abstract T setupPresenter();
+
+    protected T getPresenter(){
+        return mPresenter;
     }
 
     @Override
@@ -34,6 +34,11 @@ public abstract class BaseFragment extends Fragment {
         View view = inflater.inflate(getFragmentLayoutResId(), container, false);
         //ButterKnife 注解处理
         ButterKnife.inject(this, view);
+        mPresenter = setupPresenter();
+        if (mPresenter != null) {
+            mPresenter.setView(this);
+        }
+
         return view;
     }
 
@@ -41,6 +46,11 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+
+
+        if (mPresenter != null) {
+            mPresenter.setView(null);
+        }
     }
 
     /**

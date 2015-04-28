@@ -81,6 +81,7 @@ public class DaySuggestFragment extends BaseFragment {
         });
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             float lastPos = 0;
+                Calendar c = Calendar.getInstance();
 
             @Override
             public void onPageScrolled(int i, float v, int i1) {
@@ -88,10 +89,9 @@ public class DaySuggestFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int i) {
-//                Calendar c = Calendar.getInstance();
-//                c.setTime(new Date());
-//                c.add(Calendar.DAY_OF_MONTH, i);
-//                mIndicater.setDate(c.getTime());
+                c.setTime(new Date());
+                c.add(Calendar.DAY_OF_MONTH, i);
+                mIndicater.setDate(c.getTime());
 
                 Log.d("---", "0->1->2->onPageSelected");
             }

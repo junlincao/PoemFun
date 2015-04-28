@@ -1,76 +1,36 @@
 package com.cjl.poetryfan;
 
 import android.app.Application;
-import android.util.Log;
 
+import com.cjl.poetryfan.di.AppComponent;
+import com.cjl.poetryfan.di.component.DaggerAppComponent;
+import com.cjl.poetryfan.di.component.DaggerNetworkComponent;
 import com.cjl.poetryfan.di.ContextModule;
-import com.cjl.poetryfan.domain.DomainModule;
-import com.cjl.poetryfan.executor.ExecutorModul;
-import com.cjl.poetryfan.ui.UIModule;
-import com.cjl.poetryfan.util.UtilModule;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.imagepipeline.core.ImagePipelineConfig;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
-import dagger.ObjectGraph;
 
 /**
  * Application
- * <p/>
- * 初始化Dagger
  *
  * @author CJL
  * @since 2015-04-13
  */
 public class AppApplication extends Application {
-    ObjectGraph objectGraph;
-    @Inject
-    ImagePipelineConfig mImagePipelineConfig;
+
+    private AppComponent mAppComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        Object[] modules = new Object[]{
-                new ContextModule(this),
-                new DomainModule(),
-                new ExecutorModul(),
-                new UtilModule(),
-                new UIModule()
-        };
+        mAppComponent = DaggerAppComponent.builder()
+                .contextModule(new ContextModule(this))
+                .networkComponent(DaggerNetworkComponent.create())
+                .build();
 
-        objectGraph = ObjectGraph.create(modules);
-        objectGraph.injectStatics();
-        objectGraph.inject(this);
-
-        Fresco.initialize(this, mImagePipelineConfig);
+        Fresco.initialize(this, mAppComponent.getFrescoConfig());
     }
 
-    /**
-     * Inject every dependency declared in the object with the @Inject
-     * annotation if the dependency has been already declared in a module and
-     * already initialized by Dagger.
-     *
-     * @param object object to inject.
-     */
-    public void inject(Object object) {
-        objectGraph.inject(object);
-    }
-
-    /**
-     * Extend the dependency container graph will new dependencies provided by
-     * the modules passed as arguments.
-     *
-     * @param modules used to populate the dependency container.
-     */
-    public ObjectGraph plus(List<Object> modules) {
-        if (modules == null) {
-            Log.e("AppApplication", "plus null modules!");
-            return objectGraph;
-        }
-        return objectGraph.plus(modules.toArray());
+    public AppComponent getAppComponent() {
+        return mAppComponent;
     }
 }

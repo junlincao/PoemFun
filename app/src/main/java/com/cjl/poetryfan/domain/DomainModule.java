@@ -10,7 +10,7 @@ import dagger.Module;
  * @author CJL
  * @since 2015-04-13
  */
-@Module(library = true)
+@Module
 public class DomainModule {
 
     //TODO

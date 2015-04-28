@@ -2,6 +2,8 @@ package com.cjl.poetryfan.ui.presenter;
 
 import android.support.v4.app.Fragment;
 
+import com.cjl.poetryfan.ui.IView;
+import com.cjl.poetryfan.ui.activity.MainActivity;
 import com.cjl.poetryfan.ui.fragment.DaySuggestFragment;
 import com.cjl.poetryfan.util.BusEvents;
 import com.squareup.otto.Bus;
@@ -15,16 +17,15 @@ import javax.inject.Inject;
  * @author CJL
  * @since 2015-04-15
  */
-public class MainPresenter {
+public class MainPresenter extends BasePresenter<MainPresenter.MainView>{
     @Inject
     Bus bus;
 
-    public interface MainView {
+    public interface MainView extends IView {
         void replaceFragment(Fragment fragment);
     }
 
-    @Inject
-    MainPresenter() {
+    public MainPresenter() {
 
     }
 

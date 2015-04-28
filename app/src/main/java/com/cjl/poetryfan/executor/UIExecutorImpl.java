@@ -4,15 +4,15 @@ import android.os.Handler;
 import android.os.Looper;
 
 /**
- * UIThread 实现
+ * UIExecutor 实现
  *
  * @author CJL
  * @since 2015-04-13
  */
-public class UIThreadImpl implements UIThread {
+public class UIExecutorImpl implements UIExecutor {
     private Handler mHandler;
 
-    UIThreadImpl() {
+    public UIExecutorImpl() {
         mHandler = new Handler(Looper.getMainLooper());
     }
 

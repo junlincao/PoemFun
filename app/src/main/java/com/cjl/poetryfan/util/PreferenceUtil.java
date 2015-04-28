@@ -15,7 +15,7 @@ public class PreferenceUtil {
 
     static final String USER_LEARNED_DRAWER = "USER_LEARNED_DRAWER";
 
-    PreferenceUtil(Context ctx) {
+    public PreferenceUtil(Context ctx) {
         mSp = PreferenceManager.getDefaultSharedPreferences(ctx);
     }
 

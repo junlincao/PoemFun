@@ -8,19 +8,12 @@ import android.util.TypedValue;
 
 import com.cjl.poetryfan.R;
 import com.cjl.poetryfan.ui.fragment.NavDrawerFragment;
+import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.MainPresenter;
-import com.cjl.poetryfan.util.PreferenceUtil;
-
-import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.InjectView;
 
 public class MainActivity extends BaseActivity implements MainPresenter.MainView {
-
-    @Inject
-    MainPresenter mPresenter;
 
     @InjectView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
@@ -32,8 +25,11 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
         TypedValue sTypedValue = new TypedValue();
         getTheme().resolveAttribute(R.attr.colorPrimaryDark, sTypedValue, true);
         mDrawerLayout.setStatusBarBackgroundColor(sTypedValue.data);
+    }
 
-        mPresenter.setView(this);
+    @Override
+    public BasePresenter setupPresenter() {
+        return new MainPresenter();
     }
 
     @Override
@@ -51,19 +47,8 @@ public class MainActivity extends BaseActivity implements MainPresenter.MainView
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mPresenter.setView(null);
-    }
-
-    @Override
     protected int getLayoutRes() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected List<Object> getExtraModules() {
-        return null;
     }
 
     @Override

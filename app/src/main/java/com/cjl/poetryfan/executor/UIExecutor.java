@@ -6,6 +6,6 @@ package com.cjl.poetryfan.executor;
  * @author CJL
  * @since 2015-04-13
  */
-public interface UIThread {
+public interface UIExecutor {
     void post(Runnable r);
 }

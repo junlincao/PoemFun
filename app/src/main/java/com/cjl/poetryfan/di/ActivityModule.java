@@ -18,6 +18,8 @@ package com.cjl.poetryfan.di;
 import android.app.Activity;
 import android.content.Context;
 
+import com.cjl.poetryfan.di.ActivityContext;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -29,7 +31,7 @@ import dagger.Provides;
  * @author CJL
  * @since 2015-04-13
  */
-@Module(library = true)
+@Module
 public final class ActivityModule {
 
     private final Activity activity;

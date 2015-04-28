@@ -7,7 +7,11 @@ import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 
 
+import com.cjl.poetryfan.di.FilesDirectory;
 import com.facebook.common.internal.Preconditions;
+import com.facebook.imagepipeline.backends.okhttp.OkHttpImagePipelineConfigFactory;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.io.File;
 
@@ -17,12 +21,12 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * com.cjl.poemfun.di
+ * ApplicationContext Module
  *
  * @author CJL
  * @since 2015-04-15
  */
-@Module(library = true)
+@Module
 public class ContextModule {
     private Context mContext;
 
@@ -36,31 +40,34 @@ public class ContextModule {
     }
 
     @Provides
-    @Singleton
     public AccountManager provideAccountManager() {
         return AccountManager.get(mContext);
     }
 
     @Provides
+    @FilesDirectory
     public File providePrivateFileDirectory() {
         return mContext.getFilesDir();
     }
 
     @Provides
-    @Singleton
     public AssetManager provideAssetManager() {
         return mContext.getAssets();
     }
 
     @Provides
-    @Singleton
     public AlarmManager provideAlarmManager() {
         return (AlarmManager) mContext.getSystemService(Context.ALARM_SERVICE);
     }
 
     @Provides
-    @Singleton
     public LayoutInflater provideLayoutInflater() {
         return LayoutInflater.from(mContext);
+    }
+
+    @Provides
+    ImagePipelineConfig provideImagePipeline(Context ctx, OkHttpClient client) {
+        return OkHttpImagePipelineConfigFactory.newBuilder(ctx, client)
+                .build();
     }
 }
