@@ -1,9 +1,8 @@
 package com.cjl.poetryfan.di;
 
+import javax.inject.Qualifier;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import javax.inject.Qualifier;
 
 /**
  * com.cjl.poetryfan.di

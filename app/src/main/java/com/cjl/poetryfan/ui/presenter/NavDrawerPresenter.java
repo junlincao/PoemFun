@@ -2,7 +2,6 @@ package com.cjl.poetryfan.ui.presenter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
-
 import com.cjl.poetryfan.ui.IView;
 import com.cjl.poetryfan.ui.fragment.DaySuggestFragment;
 import com.cjl.poetryfan.ui.fragment.HallCenterFragment;

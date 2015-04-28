@@ -5,13 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
-
+import butterknife.InjectView;
 import com.cjl.poetryfan.R;
 import com.cjl.poetryfan.ui.fragment.NavDrawerFragment;
 import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.MainPresenter;
-
-import butterknife.InjectView;
 import com.cjl.poetryfan.util.BusEvents;
 import com.squareup.otto.Subscribe;
 

@@ -2,12 +2,9 @@ package com.cjl.poetryfan.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import butterknife.ButterKnife;
 import com.cjl.poetryfan.AppApplication;
 import com.cjl.poetryfan.di.AppComponent;
-import com.cjl.poetryfan.di.ContextModule;
-import com.cjl.poetryfan.di.DaggerAppComponent;
 import com.cjl.poetryfan.ui.DaggerUIComponent;
 import com.cjl.poetryfan.ui.IView;
 import com.cjl.poetryfan.ui.UIComponent;

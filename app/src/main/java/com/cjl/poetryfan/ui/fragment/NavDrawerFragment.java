@@ -7,7 +7,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,9 +17,6 @@ import com.cjl.poetryfan.R;
 import com.cjl.poetryfan.ui.presenter.BasePresenter;
 import com.cjl.poetryfan.ui.presenter.NavDrawerPresenter;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.squareup.otto.Bus;
-
-import javax.inject.Inject;
 
 /**
  * navigation drawer Fragment
