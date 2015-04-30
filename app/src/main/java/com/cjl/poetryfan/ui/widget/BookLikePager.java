@@ -9,6 +9,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * ViewPager 书页效果
  * <p/>
@@ -35,15 +38,32 @@ public class BookLikePager extends ViewPager {
         Drawable getItemViewBackground();
     }
 
+    private class EdgeProperties {
+        float x;
+        float y;
+        int alpha;
+        int width;
+        int height;
+
+        @Override
+        public String toString() {
+            return "EdgeProperties{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    ", alpha=" + alpha +
+                    ", width=" + width +
+                    ", height=" + height +
+                    '}';
+        }
+    }
 
     private int mMaxEdgeWidth;
     private int mMaxEdgeCount = 3;
-    private float mScrollOffset;
     private Drawable mEdgeDrawable;
 
-    private int mFirstOffset;
-    private int mNowEdgeCount;
     private float mItemEdgeWidth;
+    private float mItemScaleHeight;
+    List<EdgeProperties> mExtraEdges;
 
 
     public BookLikePager(Context context) {
@@ -64,6 +84,8 @@ public class BookLikePager extends ViewPager {
         setPageTransformer(false, null); // set the default PageTransformer
         setClipToPadding(false);
         resetPadding();
+
+        Log.d("---", "mItemEdgeWidth=" + mItemEdgeWidth + "; pad=" + getPaddingLeft());
     }
 
     public void setMaxPageEdgeCount(int count) {
@@ -83,6 +105,7 @@ public class BookLikePager extends ViewPager {
         int padding = (int) (mMaxEdgeWidth * (mMaxEdgeCount + 1) / mMaxEdgeCount / 2f);
         setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
         mItemEdgeWidth = mMaxEdgeWidth * 1f / mMaxEdgeCount;
+        mItemScaleHeight = mItemEdgeWidth * 2;
     }
 
     @Override
@@ -96,34 +119,6 @@ public class BookLikePager extends ViewPager {
         }
 
         super.setAdapter(adapter);
-
-//        getAdapter().registerDataSetObserver(new DataSetObserver() {
-//            @Override
-//            public void onInvalidated() {
-//                updateState();
-//            }
-//        });
-
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("---", "mItemEdgeWidth=" + mItemEdgeWidth);
-                Log.d("---", "paddingLeft=" + getPaddingLeft());
-                logDx(0, 0);
-                logDx(0, 1);
-                logDx(0, 2);
-                logDx(1, 0);
-                logDx(1, 1);
-                logDx(1, 2);
-                logDx(2, 1);
-                logDx(2, 2);
-            }
-        }, 1000);
-    }
-
-    private void logDx(int idx, int cIdx) {
-        float x = getDefaultX(idx, cIdx);
-        Log.d("---", "idx=" + idx + "; cIdx=" + cIdx + "; x=" + x);
     }
 
     @Override
@@ -132,7 +127,9 @@ public class BookLikePager extends ViewPager {
             @Override
             public void transformPage(View page, float position) {
                 int idx = ((IBookLikePagerAdapter) getAdapter()).getPositionByItemView(page);
-                onTransformPage(page, position, idx);
+                position = (page.getLeft() - getPaddingLeft() - getScrollX()) * 1f / page.getWidth();
+
+                onPageTransform(page, idx, position);
 
                 if (transformer != null) {
                     transformer.transformPage(page, position);
@@ -144,67 +141,164 @@ public class BookLikePager extends ViewPager {
     }
 
     /**
-     * @param view   PagerAdapter 的一个itemView
-     * @param offset 从屏幕左边进-1->0, 出0->-1
+     * @param view   page
+     * @param idx    page 在adapter 中的idx
+     * @param offset transformPage position
+     *               从屏幕左边进-1->0, 出0->-1
      *               屏幕右边进 1->0, 出0->1
-     * @param idx    view 在adapter中的position
+     * @return ViewPager 偏移位置
      */
-    private void onTransformPage(View view, float offset, int idx) {
-//        Log.d("---", "iw=" + view.getWidth() + "; w=" + getWidth() + "; pl=" + getPaddingLeft() + "; pr=" + getPaddingRight());
-        view.setTranslationX(calcTranslationX(idx, offset));
+    private void onPageTransform(View view, int idx, float offset) {
+        view.setTranslationX(calcTranslationX(view, idx, offset));
+        view.setScaleY(calcScaleY(view, idx, offset));
+        view.setAlpha(calcAlpha(idx, offset));
+
+//        if (idx == getCurrentItem()) {
+//            setExtraEdge(view, idx, offset);
+//        }
+    }
+
+    private void setExtraEdge(View view, int cIdx, float offset) {
+        if (mExtraEdges == null) {
+            mExtraEdges = new ArrayList<>(mMaxEdgeCount - 2);
+        } else {
+            mExtraEdges.clear();
+        }
+
+        if (cIdx > mMaxEdgeCount - 2) {
+            int count = cIdx - mMaxEdgeCount + 2;
+            int start = cIdx - 2;
+            if (offset > 0 && cIdx - mMaxEdgeCount >= 0) {
+                count++;
+                start = start - 1;
+            }
+
+            int idx;
+            float from, to, height;
+            for (int i = 0; i < count; i++) {
+                idx = start + i;
+                EdgeProperties ep = new EdgeProperties();
+
+                if (offset <= 0) {
+                    from = getDefaultX(idx, cIdx);
+                    to = getDefaultX(idx - 1, cIdx);
+                    ep.x = from + (to - from) * Math.abs(offset);
+
+                    from = view.getHeight() - mItemScaleHeight * (cIdx - idx);
+                    to = from - mItemScaleHeight;
+                    height = from + (to - from) * Math.abs(offset);
+                    ep.y = (view.getHeight() - height) / 2;
+                } else {
+                    from = getDefaultX(idx, cIdx);
+                    to = getDefaultX(idx + 1, cIdx);
+                    ep.x = from + (to - from) * Math.abs(offset);
+
+                    from = view.getHeight() - mItemScaleHeight * (cIdx - idx);
+                    to = from + mItemScaleHeight;
+                    height = from + (to - from) * Math.abs(offset);
+                    ep.y = (view.getHeight() - height) / 2;
+                }
+
+                ep.width = view.getWidth();
+                ep.height = (int) height;
+
+                ep.alpha = (int) (calcAlpha(idx, offset) * 255);
+
+                mExtraEdges.add(ep);
+            }
+
+            Log.d("---", mExtraEdges.toString());
+        }
+    }
+
+    private float calcAlpha(int idx, float offset) {
+        final int cIdx = getCurrentItem();
+        float from, to;
+        float alphaDecrease = 0.2f;
+
+        if (idx > cIdx) {
+            return 1;
+        } else if (idx == cIdx) {
+            if (offset <= 0) {
+                from = 1;
+                to = 1 - alphaDecrease;
+            } else {
+                return 1;
+            }
+        } else if (cIdx - idx == 1) {
+            from = 1 - alphaDecrease * (cIdx - idx - 1);
+            to = from - alphaDecrease;
+        } else {
+            return 1;
+        }
+        return from + (to - from) * Math.abs(offset);
+    }
+
+    private float calcScaleY(View view, int idx, float offset) {
+        final int cIdx = getCurrentItem();
+        float from, to;
+        final int viewH = view.getHeight();
+
+        if (idx > cIdx) {
+            return 1;
+        } else if (idx == cIdx) {
+            if (offset <= 0) {
+                from = viewH;
+                to = viewH - mItemScaleHeight;
+            } else {
+                return 1;
+            }
+        } else if (cIdx - idx == 1) {
+            from = viewH - mItemScaleHeight * (cIdx - idx - 1);
+            to = from - mItemScaleHeight;
+        } else {
+            return 1;
+        }
+        return (from + (to - from) * Math.abs(offset)) / viewH;
     }
 
     /**
      * @param idx    page 在adapter 中的idx
-     * @param offset 从屏幕左边进-1->0, 出0->-1
-     *               屏幕右边进 1->0, 出0->1
+     * @param offset transformPage position
      * @return ViewPager 偏移位置
      */
-    private float calcTranslationX(int idx, float offset) {
+    private float calcTranslationX(View view, int idx, float offset) {
         final int cIdx = getCurrentItem();
 
         float from, to;
-        if (idx == cIdx + 1 && offset >= 0 && offset < 1) {
+
+        if (idx == cIdx + 1) {
             from = getDefaultX(idx, cIdx + 1);
             to = getDefaultX(idx, cIdx);
         } else if (idx > cIdx + 1) {
             return -getPaddingRight();
         } else if (idx == cIdx) {
             if (offset <= 0) {
-                if (idx == getAdapter().getCount() - 1) {
-//                    from = getDefaultX(idx, idx);
-//                    to = from;
-                    return 0;
-                } else {
-                    from = getDefaultX(idx, cIdx);
-                    to = getDefaultX(idx, cIdx + 1);
-                }
+                from = getDefaultX(idx, cIdx);
+                to = getDefaultX(idx, cIdx + 1);
             } else {
-                if (idx == 0) {
-//                    from = getDefaultX(idx, idx);
-//                    to = from;
-                    return 0;
-                } else {
-                    from = getDefaultX(idx, cIdx);
-                    to = getDefaultX(idx, cIdx - 1);
-                }
+                from = getDefaultX(idx, cIdx);
+                to = getDefaultX(idx, cIdx + 1);
             }
-        } else if (idx == cIdx - 1 && offset <= 0 && offset > -1) {
-            from = getDefaultX(idx, cIdx - 1);
-            to = getDefaultX(idx, cIdx);
+        } else if (cIdx - idx == 1) {
+            if(offset < -1) {
+                from = getDefaultX(idx, cIdx);
+                to = getDefaultX(idx, cIdx + 1);
+            } else {
+                from = getDefaultX(idx, idx);
+                to = getDefaultX(idx, idx + 1);
+            }
         } else {
             return getPaddingLeft();
         }
-        float toX = from + (to - from) * Math.abs(offset);
-        float defX = -offset * getWidth();
-        float res;
-//        if(offset <= 0){
-//            res = defX - toX;
-//        } else {
-            res = defX + toX;
+//        if(offset < -1 || offset > 1){
+//            offset = Math.abs(offset) - (int) Math.abs(offset);
 //        }
 
-        Log.d("---", idx + "->offset=" + offset + ";\tfrom=" + from + ";\tto=" + to + ";\tnx=" + toX + ";\ttx=" + defX + ";\tres=" + res );
+        float toX = from + (to - from) * Math.abs(offset);
+        float res = toX - view.getLeft() + getScrollX();
+
+        Log.d("---", idx + "->from=" + from + ";\tto=" + to + ";\ttoX=" + toX + ";\toffset=" + offset);
         return res;
     }
 
@@ -218,40 +312,40 @@ public class BookLikePager extends ViewPager {
     private float getDefaultX(int idx, int ci) {
         if (idx > ci) { // 大于当前显示页，应该是在屏幕右边看不见状态
             return getWidth() * (idx - ci);
-        } else if (ci - idx >= mMaxEdgeCount) { // 相隔超过最大页数，在屏幕左边
+        } else if (ci - idx > mMaxEdgeCount) { // 相隔超过最大页数，在屏幕左边
             return -getWidth() * (ci - idx - mMaxEdgeCount + 1);
-        } else if (ci < mMaxEdgeCount) {//小于最大页数，所有页一起居中显示，计算偏差
-            float delta = getPaddingLeft();
-            if (ci > 0) {
-                delta -= ci * mItemEdgeWidth / 2;
-            }
+        } else if (ci < mMaxEdgeCount - 1) {//小于最大页数，所有页一起居中显示，计算偏差
+            float delta = getPaddingLeft() - (ci + 2) * mItemEdgeWidth / 2;
             return delta + idx * mItemEdgeWidth;
         } else {
             return (mMaxEdgeCount + idx - ci) * mItemEdgeWidth;
         }
     }
 
-    private void updateState() {
-        PagerAdapter mAdapter = getAdapter();
-        if (mAdapter == null) {
-            return;
-        }
-        int currentItem = getCurrentItem();
-
-
-        mNowEdgeCount = Math.min(currentItem, mMaxEdgeCount) + 1;
-    }
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+//        mEdgeDrawable = new ColorDrawable(Color.BLACK);
         if (getAdapter() != null) {
-            drawEdge();
+//            drawEdge(canvas);
         }
     }
 
-    private void drawEdge() {
-
+    private void drawEdge(Canvas canvas) {
+        if (mExtraEdges == null) {
+            return;
+        }
+        int clipSaveCount = canvas.save();
+        canvas.clipRect(mItemEdgeWidth + getScrollX(), 0, mMaxEdgeCount * mItemEdgeWidth + getScrollX(), getHeight());
+        for (EdgeProperties ep : mExtraEdges) {
+            mEdgeDrawable.setBounds(0, 0, ep.width, ep.height);
+            mEdgeDrawable.setAlpha(ep.alpha);
+            canvas.save();
+            canvas.translate(ep.x + getScrollX(), ep.y);
+            mEdgeDrawable.draw(canvas);
+            canvas.restore();
+        }
+        canvas.restoreToCount(clipSaveCount);
     }
 }

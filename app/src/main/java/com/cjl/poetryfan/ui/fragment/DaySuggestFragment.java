@@ -1,5 +1,7 @@
 package com.cjl.poetryfan.ui.fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -7,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import butterknife.InjectView;
 import com.cjl.poetryfan.R;
 import com.cjl.poetryfan.ui.presenter.BasePresenter;
+import com.cjl.poetryfan.ui.presenter.DaySuggestPresenter;
 import com.cjl.poetryfan.ui.widget.BookLikePager;
 import com.cjl.poetryfan.ui.widget.MonthDayIndicater;
 
@@ -27,7 +29,7 @@ import java.util.Date;
  * @author CJL
  * @since 2015-04-16
  */
-public class DaySuggestFragment extends BaseFragment {
+public class DaySuggestFragment extends BaseFragment implements DaySuggestPresenter.DaySuggestView {
 
     @InjectView(R.id.toolbar)
     Toolbar mToolbar;
@@ -89,7 +91,7 @@ public class DaySuggestFragment extends BaseFragment {
                 c.add(Calendar.DAY_OF_MONTH, i);
                 mIndicater.setDate(c.getTime());
 
-                Log.d("---", "0->1->2->onPageSelected");
+//                Log.d("---", "0->1->2->onPageSelected");
             }
 
             @Override
@@ -108,7 +110,7 @@ public class DaySuggestFragment extends BaseFragment {
 
         @Override
         public Drawable getItemViewBackground() {
-            return getResources().getDrawable(R.drawable.day_sug_card);
+            return new ColorDrawable(Color.WHITE);
         }
 
         @Override
@@ -128,7 +130,7 @@ public class DaySuggestFragment extends BaseFragment {
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 300);
             tv.setTag(position);
             container.addView(tv);
-            tv.setBackgroundColor(R.drawable.day_sug_card);
+            tv.setBackgroundColor(Color.WHITE);
             return tv;
         }
 
