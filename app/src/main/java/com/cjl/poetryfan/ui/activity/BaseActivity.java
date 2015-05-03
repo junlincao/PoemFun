@@ -59,11 +59,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends ActionBarAct
         return mPresenter;
     }
 
-    protected UIComponent getUIComponent() {
+    @Override
+    public UIComponent getUIComponent() {
         return mUIComponent;
     }
 
-    protected AppComponent getAppComponent() {
+    @Override
+    public AppComponent getAppComponent() {
         return mAppComponent;
     }
 

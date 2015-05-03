@@ -73,11 +73,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         mUIComponent = null;
     }
 
-    protected UIComponent getUIComponent() {
+    public UIComponent getUIComponent() {
         return mUIComponent;
     }
 
-    protected AppComponent getAppComponent() {
+    public AppComponent getAppComponent() {
         return mAppComponent;
     }
 

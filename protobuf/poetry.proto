@@ -2,18 +2,50 @@ package poetry;
 
 
 option java_package = "com.cjl.poetryfan.proto";
-option java_outer_classname = "poetryProto";
 
-message poetry{
-	optional string author = 1;
-	optional string birth = 2;
-	optional string title = 3;
-	optional string content = 4;
-	optional string head_img = 5;
+option java_outer_classname = "PoetryProto";
+
+//诗歌
+message Poetry {
+    //作者
+    optional string author = 1;
+    //作者生卒
+    optional string birth = 2;
+    //名称/标题
+    optional string title = 3;
+    //内容
+    optional string content = 4;
+    //作者头像
+    optional string head_img = 5;
 }
 
-message day_suggest{
-	required int32 id = 1;
-	required string date = 2;
-	required poetry poetry = 3;
+//每日推荐内容
+message DaySuggest {
+    required int32 id = 1;
+    required string date = 2;
+    required Poetry poetry = 3;
+}
+
+//返回的每日推荐日期列表
+message DaySuggestList {
+    message IdAndDay {
+        required int32 id = 1;
+        required string day = 2;
+    }
+    repeated IdAndDay days = 1;
+}
+
+//请求有推荐日期列表
+message DaySuggestListRequest {
+    //列表大小
+    optional int32 ps = 1 [default = 20];
+    //指定日期，若非空，则结果日期必定小于此日期
+    optional string dayBefore = 2;
+}
+//请求指定日期id的诗歌, 若id非空，则查询id，否则查询日期，都为空则查询当日
+message DaySuggestRequest {
+    //日期对应的唯一id
+    optional int32 id = 1;
+    //日期字符串
+    optional string day = 2;
 }

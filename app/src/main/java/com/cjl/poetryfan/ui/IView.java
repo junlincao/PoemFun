@@ -1,5 +1,7 @@
 package com.cjl.poetryfan.ui;
 
+import com.cjl.poetryfan.di.AppComponent;
+
 /**
  * Base View, Activity or Fragment etc have Presenter must implements this
  *
@@ -10,4 +12,8 @@ public interface IView {
     void showLoading();
 
     void hideLoading();
+
+    AppComponent getAppComponent();
+
+    UIComponent getUIComponent();
 }

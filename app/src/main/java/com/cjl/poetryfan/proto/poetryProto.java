@@ -3,107 +3,169 @@
 
 package com.cjl.poetryfan.proto;
 
-import com.google.protobuf.AbstractMessage;
-
-public final class poetryProto {
-  private poetryProto() {}
+public final class PoetryProto {
+  private PoetryProto() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface poetryOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:poetry.poetry)
+  public interface PoetryOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:poetry.Poetry)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     boolean hasAuthor();
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     java.lang.String getAuthor();
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     com.google.protobuf.ByteString
         getAuthorBytes();
 
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     boolean hasBirth();
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     java.lang.String getBirth();
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     com.google.protobuf.ByteString
         getBirthBytes();
 
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     boolean hasTitle();
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     java.lang.String getTitle();
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     com.google.protobuf.ByteString
         getTitleBytes();
 
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     boolean hasContent();
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     java.lang.String getContent();
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     com.google.protobuf.ByteString
         getContentBytes();
 
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     boolean hasHeadImg();
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     java.lang.String getHeadImg();
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     com.google.protobuf.ByteString
         getHeadImgBytes();
   }
   /**
-   * Protobuf type {@code poetry.poetry}
+   * Protobuf type {@code poetry.Poetry}
+   *
+   * <pre>
+   *诗歌
+   * </pre>
    */
-  public static final class poetry extends
+  public static final class Poetry extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:poetry.poetry)
-      poetryOrBuilder {
-    // Use poetry.newBuilder() to construct.
-    private poetry(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:poetry.Poetry)
+      PoetryOrBuilder {
+    // Use Poetry.newBuilder() to construct.
+    private Poetry(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private poetry(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private Poetry(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final poetry defaultInstance;
-    public static poetry getDefaultInstance() {
+    private static final Poetry defaultInstance;
+    public static Poetry getDefaultInstance() {
       return defaultInstance;
     }
 
-    public poetry getDefaultInstanceForType() {
+    public Poetry getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -113,7 +175,7 @@ public final class poetryProto {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private poetry(
+    private Poetry(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -180,28 +242,28 @@ public final class poetryProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return poetryProto.internal_static_poetry_poetry_descriptor;
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_Poetry_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return poetryProto.internal_static_poetry_poetry_fieldAccessorTable
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_Poetry_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              poetryProto.poetry.class, poetryProto.poetry.Builder.class);
+              com.cjl.poetryfan.proto.PoetryProto.Poetry.class, com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<poetry> PARSER =
-        new com.google.protobuf.AbstractParser<poetry>() {
-      public poetry parsePartialFrom(
+    public static com.google.protobuf.Parser<Poetry> PARSER =
+        new com.google.protobuf.AbstractParser<Poetry>() {
+      public Poetry parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new poetry(input, extensionRegistry);
+        return new Poetry(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<poetry> getParserForType() {
+    public com.google.protobuf.Parser<Poetry> getParserForType() {
       return PARSER;
     }
 
@@ -210,12 +272,20 @@ public final class poetryProto {
     private java.lang.Object author_;
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     public boolean hasAuthor() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     public java.lang.String getAuthor() {
       java.lang.Object ref = author_;
@@ -233,6 +303,10 @@ public final class poetryProto {
     }
     /**
      * <code>optional string author = 1;</code>
+     *
+     * <pre>
+     *作者
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getAuthorBytes() {
@@ -252,12 +326,20 @@ public final class poetryProto {
     private java.lang.Object birth_;
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     public boolean hasBirth() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     public java.lang.String getBirth() {
       java.lang.Object ref = birth_;
@@ -275,6 +357,10 @@ public final class poetryProto {
     }
     /**
      * <code>optional string birth = 2;</code>
+     *
+     * <pre>
+     *作者生卒
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getBirthBytes() {
@@ -294,12 +380,20 @@ public final class poetryProto {
     private java.lang.Object title_;
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     public boolean hasTitle() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     public java.lang.String getTitle() {
       java.lang.Object ref = title_;
@@ -317,6 +411,10 @@ public final class poetryProto {
     }
     /**
      * <code>optional string title = 3;</code>
+     *
+     * <pre>
+     *名称/标题
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getTitleBytes() {
@@ -336,12 +434,20 @@ public final class poetryProto {
     private java.lang.Object content_;
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     public boolean hasContent() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     public java.lang.String getContent() {
       java.lang.Object ref = content_;
@@ -359,6 +465,10 @@ public final class poetryProto {
     }
     /**
      * <code>optional string content = 4;</code>
+     *
+     * <pre>
+     *内容
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getContentBytes() {
@@ -378,12 +488,20 @@ public final class poetryProto {
     private java.lang.Object headImg_;
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     public boolean hasHeadImg() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     public java.lang.String getHeadImg() {
       java.lang.Object ref = headImg_;
@@ -401,6 +519,10 @@ public final class poetryProto {
     }
     /**
      * <code>optional string head_img = 5;</code>
+     *
+     * <pre>
+     *作者头像
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getHeadImgBytes() {
@@ -492,53 +614,53 @@ public final class poetryProto {
       return super.writeReplace();
     }
 
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static poetryProto.poetry parseFrom(byte[] data)
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static poetryProto.poetry parseFrom(java.io.InputStream input)
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static poetryProto.poetry parseDelimitedFrom(java.io.InputStream input)
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static poetryProto.poetry parseDelimitedFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static poetryProto.poetry parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.Poetry parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -547,7 +669,7 @@ public final class poetryProto {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(poetryProto.poetry prototype) {
+    public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.Poetry prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -559,25 +681,29 @@ public final class poetryProto {
       return builder;
     }
     /**
-     * Protobuf type {@code poetry.poetry}
+     * Protobuf type {@code poetry.Poetry}
+     *
+     * <pre>
+     *诗歌
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:poetry.poetry)
-        poetryProto.poetryOrBuilder {
+        // @@protoc_insertion_point(builder_implements:poetry.Poetry)
+        com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return poetryProto.internal_static_poetry_poetry_descriptor;
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_Poetry_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return poetryProto.internal_static_poetry_poetry_fieldAccessorTable
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_Poetry_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                poetryProto.poetry.class, poetryProto.poetry.Builder.class);
+                com.cjl.poetryfan.proto.PoetryProto.Poetry.class, com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder.class);
       }
 
-      // Construct using com.cjl.poetryfan.proto.poetryProto.poetry.newBuilder()
+      // Construct using com.cjl.poetryfan.proto.PoetryProto.Poetry.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -616,23 +742,23 @@ public final class poetryProto {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return poetryProto.internal_static_poetry_poetry_descriptor;
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_Poetry_descriptor;
       }
 
-      public poetryProto.poetry getDefaultInstanceForType() {
-        return poetryProto.poetry.getDefaultInstance();
+      public com.cjl.poetryfan.proto.PoetryProto.Poetry getDefaultInstanceForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance();
       }
 
-      public poetryProto.poetry build() {
-        poetryProto.poetry result = buildPartial();
+      public com.cjl.poetryfan.proto.PoetryProto.Poetry build() {
+        com.cjl.poetryfan.proto.PoetryProto.Poetry result = buildPartial();
         if (!result.isInitialized()) {
-          throw AbstractMessage.Builder.newUninitializedMessageException(result);
+          throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public poetryProto.poetry buildPartial() {
-        poetryProto.poetry result = new poetryProto.poetry(this);
+      public com.cjl.poetryfan.proto.PoetryProto.Poetry buildPartial() {
+        com.cjl.poetryfan.proto.PoetryProto.Poetry result = new com.cjl.poetryfan.proto.PoetryProto.Poetry(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -661,16 +787,16 @@ public final class poetryProto {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof poetryProto.poetry) {
-          return mergeFrom((poetryProto.poetry)other);
+        if (other instanceof com.cjl.poetryfan.proto.PoetryProto.Poetry) {
+          return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.Poetry)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(poetryProto.poetry other) {
-        if (other == poetryProto.poetry.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.Poetry other) {
+        if (other == com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance()) return this;
         if (other.hasAuthor()) {
           bitField0_ |= 0x00000001;
           author_ = other.author_;
@@ -708,11 +834,11 @@ public final class poetryProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        poetryProto.poetry parsedMessage = null;
+        com.cjl.poetryfan.proto.PoetryProto.Poetry parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (poetryProto.poetry) e.getUnfinishedMessage();
+          parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.Poetry) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -726,12 +852,20 @@ public final class poetryProto {
       private java.lang.Object author_ = "";
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public boolean hasAuthor() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public java.lang.String getAuthor() {
         java.lang.Object ref = author_;
@@ -749,6 +883,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getAuthorBytes() {
@@ -765,6 +903,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public Builder setAuthor(
           java.lang.String value) {
@@ -778,6 +920,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public Builder clearAuthor() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -787,6 +933,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string author = 1;</code>
+       *
+       * <pre>
+       *作者
+       * </pre>
        */
       public Builder setAuthorBytes(
           com.google.protobuf.ByteString value) {
@@ -802,12 +952,20 @@ public final class poetryProto {
       private java.lang.Object birth_ = "";
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public boolean hasBirth() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public java.lang.String getBirth() {
         java.lang.Object ref = birth_;
@@ -825,6 +983,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getBirthBytes() {
@@ -841,6 +1003,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public Builder setBirth(
           java.lang.String value) {
@@ -854,6 +1020,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public Builder clearBirth() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -863,6 +1033,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string birth = 2;</code>
+       *
+       * <pre>
+       *作者生卒
+       * </pre>
        */
       public Builder setBirthBytes(
           com.google.protobuf.ByteString value) {
@@ -878,12 +1052,20 @@ public final class poetryProto {
       private java.lang.Object title_ = "";
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public boolean hasTitle() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public java.lang.String getTitle() {
         java.lang.Object ref = title_;
@@ -901,6 +1083,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getTitleBytes() {
@@ -917,6 +1103,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public Builder setTitle(
           java.lang.String value) {
@@ -930,6 +1120,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public Builder clearTitle() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -939,6 +1133,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string title = 3;</code>
+       *
+       * <pre>
+       *名称/标题
+       * </pre>
        */
       public Builder setTitleBytes(
           com.google.protobuf.ByteString value) {
@@ -954,12 +1152,20 @@ public final class poetryProto {
       private java.lang.Object content_ = "";
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public boolean hasContent() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public java.lang.String getContent() {
         java.lang.Object ref = content_;
@@ -977,6 +1183,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getContentBytes() {
@@ -993,6 +1203,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public Builder setContent(
           java.lang.String value) {
@@ -1006,6 +1220,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public Builder clearContent() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -1015,6 +1233,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string content = 4;</code>
+       *
+       * <pre>
+       *内容
+       * </pre>
        */
       public Builder setContentBytes(
           com.google.protobuf.ByteString value) {
@@ -1030,12 +1252,20 @@ public final class poetryProto {
       private java.lang.Object headImg_ = "";
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public boolean hasHeadImg() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public java.lang.String getHeadImg() {
         java.lang.Object ref = headImg_;
@@ -1053,6 +1283,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getHeadImgBytes() {
@@ -1069,6 +1303,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public Builder setHeadImg(
           java.lang.String value) {
@@ -1082,6 +1320,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public Builder clearHeadImg() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -1091,6 +1333,10 @@ public final class poetryProto {
       }
       /**
        * <code>optional string head_img = 5;</code>
+       *
+       * <pre>
+       *作者头像
+       * </pre>
        */
       public Builder setHeadImgBytes(
           com.google.protobuf.ByteString value) {
@@ -1103,19 +1349,19 @@ public final class poetryProto {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:poetry.poetry)
+      // @@protoc_insertion_point(builder_scope:poetry.Poetry)
     }
 
     static {
-      defaultInstance = new poetry(true);
+      defaultInstance = new Poetry(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:poetry.poetry)
+    // @@protoc_insertion_point(class_scope:poetry.Poetry)
   }
 
-  public interface day_suggestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:poetry.day_suggest)
+  public interface DaySuggestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:poetry.DaySuggest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1142,38 +1388,42 @@ public final class poetryProto {
         getDateBytes();
 
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
     boolean hasPoetry();
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
-    poetryProto.poetry getPoetry();
+    com.cjl.poetryfan.proto.PoetryProto.Poetry getPoetry();
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
-    poetryProto.poetryOrBuilder getPoetryOrBuilder();
+    com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder getPoetryOrBuilder();
   }
   /**
-   * Protobuf type {@code poetry.day_suggest}
+   * Protobuf type {@code poetry.DaySuggest}
+   *
+   * <pre>
+   *每日推荐内容
+   * </pre>
    */
-  public static final class day_suggest extends
+  public static final class DaySuggest extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:poetry.day_suggest)
-      day_suggestOrBuilder {
-    // Use day_suggest.newBuilder() to construct.
-    private day_suggest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:poetry.DaySuggest)
+      DaySuggestOrBuilder {
+    // Use DaySuggest.newBuilder() to construct.
+    private DaySuggest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private day_suggest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private DaySuggest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final day_suggest defaultInstance;
-    public static day_suggest getDefaultInstance() {
+    private static final DaySuggest defaultInstance;
+    public static DaySuggest getDefaultInstance() {
       return defaultInstance;
     }
 
-    public day_suggest getDefaultInstanceForType() {
+    public DaySuggest getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -1183,7 +1433,7 @@ public final class poetryProto {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private day_suggest(
+    private DaySuggest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1218,11 +1468,11 @@ public final class poetryProto {
               break;
             }
             case 26: {
-              poetryProto.poetry.Builder subBuilder = null;
+              com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
                 subBuilder = poetry_.toBuilder();
               }
-              poetry_ = input.readMessage(poetryProto.poetry.PARSER, extensionRegistry);
+              poetry_ = input.readMessage(com.cjl.poetryfan.proto.PoetryProto.Poetry.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(poetry_);
                 poetry_ = subBuilder.buildPartial();
@@ -1244,28 +1494,28 @@ public final class poetryProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return poetryProto.internal_static_poetry_day_suggest_descriptor;
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return poetryProto.internal_static_poetry_day_suggest_fieldAccessorTable
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              poetryProto.day_suggest.class, poetryProto.day_suggest.Builder.class);
+              com.cjl.poetryfan.proto.PoetryProto.DaySuggest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggest.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<day_suggest> PARSER =
-        new com.google.protobuf.AbstractParser<day_suggest>() {
-      public day_suggest parsePartialFrom(
+    public static com.google.protobuf.Parser<DaySuggest> PARSER =
+        new com.google.protobuf.AbstractParser<DaySuggest>() {
+      public DaySuggest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new day_suggest(input, extensionRegistry);
+        return new DaySuggest(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<day_suggest> getParserForType() {
+    public com.google.protobuf.Parser<DaySuggest> getParserForType() {
       return PARSER;
     }
 
@@ -1328,30 +1578,30 @@ public final class poetryProto {
     }
 
     public static final int POETRY_FIELD_NUMBER = 3;
-    private poetryProto.poetry poetry_;
+    private com.cjl.poetryfan.proto.PoetryProto.Poetry poetry_;
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
     public boolean hasPoetry() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
-    public poetryProto.poetry getPoetry() {
+    public com.cjl.poetryfan.proto.PoetryProto.Poetry getPoetry() {
       return poetry_;
     }
     /**
-     * <code>required .poetry.poetry poetry = 3;</code>
+     * <code>required .poetry.Poetry poetry = 3;</code>
      */
-    public poetryProto.poetryOrBuilder getPoetryOrBuilder() {
+    public com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder getPoetryOrBuilder() {
       return poetry_;
     }
 
     private void initFields() {
       id_ = 0;
       date_ = "";
-      poetry_ = poetryProto.poetry.getDefaultInstance();
+      poetry_ = com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1420,53 +1670,53 @@ public final class poetryProto {
       return super.writeReplace();
     }
 
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static poetryProto.day_suggest parseFrom(byte[] data)
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static poetryProto.day_suggest parseFrom(java.io.InputStream input)
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static poetryProto.day_suggest parseDelimitedFrom(java.io.InputStream input)
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static poetryProto.day_suggest parseDelimitedFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static poetryProto.day_suggest parseFrom(
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1475,7 +1725,7 @@ public final class poetryProto {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(poetryProto.day_suggest prototype) {
+    public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.DaySuggest prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1487,25 +1737,29 @@ public final class poetryProto {
       return builder;
     }
     /**
-     * Protobuf type {@code poetry.day_suggest}
+     * Protobuf type {@code poetry.DaySuggest}
+     *
+     * <pre>
+     *每日推荐内容
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:poetry.day_suggest)
-        poetryProto.day_suggestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:poetry.DaySuggest)
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return poetryProto.internal_static_poetry_day_suggest_descriptor;
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggest_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return poetryProto.internal_static_poetry_day_suggest_fieldAccessorTable
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                poetryProto.day_suggest.class, poetryProto.day_suggest.Builder.class);
+                com.cjl.poetryfan.proto.PoetryProto.DaySuggest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggest.Builder.class);
       }
 
-      // Construct using com.cjl.poetryfan.proto.poetryProto.day_suggest.newBuilder()
+      // Construct using com.cjl.poetryfan.proto.PoetryProto.DaySuggest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1531,7 +1785,7 @@ public final class poetryProto {
         date_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         if (poetryBuilder_ == null) {
-          poetry_ = poetryProto.poetry.getDefaultInstance();
+          poetry_ = com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance();
         } else {
           poetryBuilder_.clear();
         }
@@ -1545,23 +1799,23 @@ public final class poetryProto {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return poetryProto.internal_static_poetry_day_suggest_descriptor;
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggest_descriptor;
       }
 
-      public poetryProto.day_suggest getDefaultInstanceForType() {
-        return poetryProto.day_suggest.getDefaultInstance();
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggest getDefaultInstanceForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.DaySuggest.getDefaultInstance();
       }
 
-      public poetryProto.day_suggest build() {
-        poetryProto.day_suggest result = buildPartial();
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggest build() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggest result = buildPartial();
         if (!result.isInitialized()) {
-          throw AbstractMessage.Builder.newUninitializedMessageException(result);
+          throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public poetryProto.day_suggest buildPartial() {
-        poetryProto.day_suggest result = new poetryProto.day_suggest(this);
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggest buildPartial() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggest result = new com.cjl.poetryfan.proto.PoetryProto.DaySuggest(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1586,16 +1840,16 @@ public final class poetryProto {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof poetryProto.day_suggest) {
-          return mergeFrom((poetryProto.day_suggest)other);
+        if (other instanceof com.cjl.poetryfan.proto.PoetryProto.DaySuggest) {
+          return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.DaySuggest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(poetryProto.day_suggest other) {
-        if (other == poetryProto.day_suggest.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.DaySuggest other) {
+        if (other == com.cjl.poetryfan.proto.PoetryProto.DaySuggest.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
         }
@@ -1631,11 +1885,11 @@ public final class poetryProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        poetryProto.day_suggest parsedMessage = null;
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (poetryProto.day_suggest) e.getUnfinishedMessage();
+          parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.DaySuggest) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -1754,19 +2008,19 @@ public final class poetryProto {
         return this;
       }
 
-      private poetryProto.poetry poetry_ = poetryProto.poetry.getDefaultInstance();
+      private com.cjl.poetryfan.proto.PoetryProto.Poetry poetry_ = com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          poetryProto.poetry, poetryProto.poetry.Builder, poetryProto.poetryOrBuilder> poetryBuilder_;
+          com.cjl.poetryfan.proto.PoetryProto.Poetry, com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder, com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder> poetryBuilder_;
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
       public boolean hasPoetry() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
-      public poetryProto.poetry getPoetry() {
+      public com.cjl.poetryfan.proto.PoetryProto.Poetry getPoetry() {
         if (poetryBuilder_ == null) {
           return poetry_;
         } else {
@@ -1774,9 +2028,9 @@ public final class poetryProto {
         }
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
-      public Builder setPoetry(poetryProto.poetry value) {
+      public Builder setPoetry(com.cjl.poetryfan.proto.PoetryProto.Poetry value) {
         if (poetryBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -1790,10 +2044,10 @@ public final class poetryProto {
         return this;
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
       public Builder setPoetry(
-          poetryProto.poetry.Builder builderForValue) {
+          com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder builderForValue) {
         if (poetryBuilder_ == null) {
           poetry_ = builderForValue.build();
           onChanged();
@@ -1804,14 +2058,14 @@ public final class poetryProto {
         return this;
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
-      public Builder mergePoetry(poetryProto.poetry value) {
+      public Builder mergePoetry(com.cjl.poetryfan.proto.PoetryProto.Poetry value) {
         if (poetryBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
-              poetry_ != poetryProto.poetry.getDefaultInstance()) {
+              poetry_ != com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance()) {
             poetry_ =
-              poetryProto.poetry.newBuilder(poetry_).mergeFrom(value).buildPartial();
+              com.cjl.poetryfan.proto.PoetryProto.Poetry.newBuilder(poetry_).mergeFrom(value).buildPartial();
           } else {
             poetry_ = value;
           }
@@ -1823,11 +2077,11 @@ public final class poetryProto {
         return this;
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
       public Builder clearPoetry() {
         if (poetryBuilder_ == null) {
-          poetry_ = poetryProto.poetry.getDefaultInstance();
+          poetry_ = com.cjl.poetryfan.proto.PoetryProto.Poetry.getDefaultInstance();
           onChanged();
         } else {
           poetryBuilder_.clear();
@@ -1836,17 +2090,17 @@ public final class poetryProto {
         return this;
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
-      public poetryProto.poetry.Builder getPoetryBuilder() {
+      public com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder getPoetryBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getPoetryFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
-      public poetryProto.poetryOrBuilder getPoetryOrBuilder() {
+      public com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder getPoetryOrBuilder() {
         if (poetryBuilder_ != null) {
           return poetryBuilder_.getMessageOrBuilder();
         } else {
@@ -1854,14 +2108,14 @@ public final class poetryProto {
         }
       }
       /**
-       * <code>required .poetry.poetry poetry = 3;</code>
+       * <code>required .poetry.Poetry poetry = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          poetryProto.poetry, poetryProto.poetry.Builder, poetryProto.poetryOrBuilder>
+          com.cjl.poetryfan.proto.PoetryProto.Poetry, com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder, com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder> 
           getPoetryFieldBuilder() {
         if (poetryBuilder_ == null) {
           poetryBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              poetryProto.poetry, poetryProto.poetry.Builder, poetryProto.poetryOrBuilder>(
+              com.cjl.poetryfan.proto.PoetryProto.Poetry, com.cjl.poetryfan.proto.PoetryProto.Poetry.Builder, com.cjl.poetryfan.proto.PoetryProto.PoetryOrBuilder>(
                   getPoetry(),
                   getParentForChildren(),
                   isClean());
@@ -1870,27 +2124,2597 @@ public final class poetryProto {
         return poetryBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:poetry.day_suggest)
+      // @@protoc_insertion_point(builder_scope:poetry.DaySuggest)
     }
 
     static {
-      defaultInstance = new day_suggest(true);
+      defaultInstance = new DaySuggest(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:poetry.day_suggest)
+    // @@protoc_insertion_point(class_scope:poetry.DaySuggest)
+  }
+
+  public interface DaySuggestListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:poetry.DaySuggestList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> 
+        getDaysList();
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay getDays(int index);
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    int getDaysCount();
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    java.util.List<? extends com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder> 
+        getDaysOrBuilderList();
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder getDaysOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code poetry.DaySuggestList}
+   *
+   * <pre>
+   *返回的每日推荐日期列表
+   * </pre>
+   */
+  public static final class DaySuggestList extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:poetry.DaySuggestList)
+      DaySuggestListOrBuilder {
+    // Use DaySuggestList.newBuilder() to construct.
+    private DaySuggestList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DaySuggestList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DaySuggestList defaultInstance;
+    public static DaySuggestList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DaySuggestList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DaySuggestList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                days_ = new java.util.ArrayList<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              days_.add(input.readMessage(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          days_ = java.util.Collections.unmodifiableList(days_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DaySuggestList> PARSER =
+        new com.google.protobuf.AbstractParser<DaySuggestList>() {
+      public DaySuggestList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DaySuggestList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DaySuggestList> getParserForType() {
+      return PARSER;
+    }
+
+    public interface IdAndDayOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:poetry.DaySuggestList.IdAndDay)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      boolean hasId();
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      int getId();
+
+      /**
+       * <code>required string day = 2;</code>
+       */
+      boolean hasDay();
+      /**
+       * <code>required string day = 2;</code>
+       */
+      java.lang.String getDay();
+      /**
+       * <code>required string day = 2;</code>
+       */
+      com.google.protobuf.ByteString
+          getDayBytes();
+    }
+    /**
+     * Protobuf type {@code poetry.DaySuggestList.IdAndDay}
+     */
+    public static final class IdAndDay extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:poetry.DaySuggestList.IdAndDay)
+        IdAndDayOrBuilder {
+      // Use IdAndDay.newBuilder() to construct.
+      private IdAndDay(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private IdAndDay(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final IdAndDay defaultInstance;
+      public static IdAndDay getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public IdAndDay getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private IdAndDay(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                id_ = input.readInt32();
+                break;
+              }
+              case 18: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                bitField0_ |= 0x00000002;
+                day_ = bs;
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_IdAndDay_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_IdAndDay_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<IdAndDay> PARSER =
+          new com.google.protobuf.AbstractParser<IdAndDay>() {
+        public IdAndDay parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new IdAndDay(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<IdAndDay> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+
+      public static final int DAY_FIELD_NUMBER = 2;
+      private java.lang.Object day_;
+      /**
+       * <code>required string day = 2;</code>
+       */
+      public boolean hasDay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string day = 2;</code>
+       */
+      public java.lang.String getDay() {
+        java.lang.Object ref = day_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            day_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>required string day = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDayBytes() {
+        java.lang.Object ref = day_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          day_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      private void initFields() {
+        id_ = 0;
+        day_ = "";
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        if (!hasId()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasDay()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeInt32(1, id_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeBytes(2, getDayBytes());
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, id_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBytesSize(2, getDayBytes());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code poetry.DaySuggestList.IdAndDay}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:poetry.DaySuggestList.IdAndDay)
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_IdAndDay_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_IdAndDay_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder.class);
+        }
+
+        // Construct using com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          id_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          day_ = "";
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_IdAndDay_descriptor;
+        }
+
+        public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay getDefaultInstanceForType() {
+          return com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.getDefaultInstance();
+        }
+
+        public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay build() {
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay buildPartial() {
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay result = new com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.id_ = id_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.day_ = day_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay) {
+            return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay other) {
+          if (other == com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.getDefaultInstance()) return this;
+          if (other.hasId()) {
+            setId(other.getId());
+          }
+          if (other.hasDay()) {
+            bitField0_ |= 0x00000002;
+            day_ = other.day_;
+            onChanged();
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (!hasId()) {
+            
+            return false;
+          }
+          if (!hasDay()) {
+            
+            return false;
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        private int id_ ;
+        /**
+         * <code>required int32 id = 1;</code>
+         */
+        public boolean hasId() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>required int32 id = 1;</code>
+         */
+        public int getId() {
+          return id_;
+        }
+        /**
+         * <code>required int32 id = 1;</code>
+         */
+        public Builder setId(int value) {
+          bitField0_ |= 0x00000001;
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required int32 id = 1;</code>
+         */
+        public Builder clearId() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          id_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object day_ = "";
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public boolean hasDay() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public java.lang.String getDay() {
+          java.lang.Object ref = day_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              day_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+            getDayBytes() {
+          java.lang.Object ref = day_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            day_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public Builder setDay(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          day_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public Builder clearDay() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          day_ = getDefaultInstance().getDay();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required string day = 2;</code>
+         */
+        public Builder setDayBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+          day_ = value;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:poetry.DaySuggestList.IdAndDay)
+      }
+
+      static {
+        defaultInstance = new IdAndDay(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:poetry.DaySuggestList.IdAndDay)
+    }
+
+    public static final int DAYS_FIELD_NUMBER = 1;
+    private java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> days_;
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    public java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> getDaysList() {
+      return days_;
+    }
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    public java.util.List<? extends com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder> 
+        getDaysOrBuilderList() {
+      return days_;
+    }
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    public int getDaysCount() {
+      return days_.size();
+    }
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay getDays(int index) {
+      return days_.get(index);
+    }
+    /**
+     * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+     */
+    public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder getDaysOrBuilder(
+        int index) {
+      return days_.get(index);
+    }
+
+    private void initFields() {
+      days_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      for (int i = 0; i < getDaysCount(); i++) {
+        if (!getDays(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < days_.size(); i++) {
+        output.writeMessage(1, days_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < days_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, days_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code poetry.DaySuggestList}
+     *
+     * <pre>
+     *返回的每日推荐日期列表
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:poetry.DaySuggestList)
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.Builder.class);
+      }
+
+      // Construct using com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDaysFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (daysBuilder_ == null) {
+          days_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          daysBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestList_descriptor;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList getDefaultInstanceForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.getDefaultInstance();
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList build() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList buildPartial() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestList result = new com.cjl.poetryfan.proto.PoetryProto.DaySuggestList(this);
+        int from_bitField0_ = bitField0_;
+        if (daysBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            days_ = java.util.Collections.unmodifiableList(days_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.days_ = days_;
+        } else {
+          result.days_ = daysBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.cjl.poetryfan.proto.PoetryProto.DaySuggestList) {
+          return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.DaySuggestList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList other) {
+        if (other == com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.getDefaultInstance()) return this;
+        if (daysBuilder_ == null) {
+          if (!other.days_.isEmpty()) {
+            if (days_.isEmpty()) {
+              days_ = other.days_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDaysIsMutable();
+              days_.addAll(other.days_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.days_.isEmpty()) {
+            if (daysBuilder_.isEmpty()) {
+              daysBuilder_.dispose();
+              daysBuilder_ = null;
+              days_ = other.days_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              daysBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDaysFieldBuilder() : null;
+            } else {
+              daysBuilder_.addAllMessages(other.days_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getDaysCount(); i++) {
+          if (!getDays(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.DaySuggestList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> days_ =
+        java.util.Collections.emptyList();
+      private void ensureDaysIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          days_ = new java.util.ArrayList<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay>(days_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder> daysBuilder_;
+
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> getDaysList() {
+        if (daysBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(days_);
+        } else {
+          return daysBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public int getDaysCount() {
+        if (daysBuilder_ == null) {
+          return days_.size();
+        } else {
+          return daysBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay getDays(int index) {
+        if (daysBuilder_ == null) {
+          return days_.get(index);
+        } else {
+          return daysBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder setDays(
+          int index, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.set(index, value);
+          onChanged();
+        } else {
+          daysBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder setDays(
+          int index, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder addDays(com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.add(value);
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder addDays(
+          int index, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay value) {
+        if (daysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDaysIsMutable();
+          days_.add(index, value);
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder addDays(
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.add(builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder addDays(
+          int index, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder builderForValue) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          daysBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder addAllDays(
+          java.lang.Iterable<? extends com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay> values) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, days_);
+          onChanged();
+        } else {
+          daysBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder clearDays() {
+        if (daysBuilder_ == null) {
+          days_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          daysBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public Builder removeDays(int index) {
+        if (daysBuilder_ == null) {
+          ensureDaysIsMutable();
+          days_.remove(index);
+          onChanged();
+        } else {
+          daysBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder getDaysBuilder(
+          int index) {
+        return getDaysFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder getDaysOrBuilder(
+          int index) {
+        if (daysBuilder_ == null) {
+          return days_.get(index);  } else {
+          return daysBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public java.util.List<? extends com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder> 
+           getDaysOrBuilderList() {
+        if (daysBuilder_ != null) {
+          return daysBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(days_);
+        }
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder addDaysBuilder() {
+        return getDaysFieldBuilder().addBuilder(
+            com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder addDaysBuilder(
+          int index) {
+        return getDaysFieldBuilder().addBuilder(
+            index, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .poetry.DaySuggestList.IdAndDay days = 1;</code>
+       */
+      public java.util.List<com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder> 
+           getDaysBuilderList() {
+        return getDaysFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder> 
+          getDaysFieldBuilder() {
+        if (daysBuilder_ == null) {
+          daysBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDay.Builder, com.cjl.poetryfan.proto.PoetryProto.DaySuggestList.IdAndDayOrBuilder>(
+                  days_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          days_ = null;
+        }
+        return daysBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:poetry.DaySuggestList)
+    }
+
+    static {
+      defaultInstance = new DaySuggestList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:poetry.DaySuggestList)
+  }
+
+  public interface DaySuggestListRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:poetry.DaySuggestListRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 ps = 1 [default = 20];</code>
+     *
+     * <pre>
+     *列表大小
+     * </pre>
+     */
+    boolean hasPs();
+    /**
+     * <code>optional int32 ps = 1 [default = 20];</code>
+     *
+     * <pre>
+     *列表大小
+     * </pre>
+     */
+    int getPs();
+
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    boolean hasDayBefore();
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    java.lang.String getDayBefore();
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDayBeforeBytes();
+  }
+  /**
+   * Protobuf type {@code poetry.DaySuggestListRequest}
+   *
+   * <pre>
+   *请求有推荐日期列表
+   * </pre>
+   */
+  public static final class DaySuggestListRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:poetry.DaySuggestListRequest)
+      DaySuggestListRequestOrBuilder {
+    // Use DaySuggestListRequest.newBuilder() to construct.
+    private DaySuggestListRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DaySuggestListRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DaySuggestListRequest defaultInstance;
+    public static DaySuggestListRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DaySuggestListRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DaySuggestListRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              ps_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              dayBefore_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestListRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestListRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DaySuggestListRequest> PARSER =
+        new com.google.protobuf.AbstractParser<DaySuggestListRequest>() {
+      public DaySuggestListRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DaySuggestListRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DaySuggestListRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int PS_FIELD_NUMBER = 1;
+    private int ps_;
+    /**
+     * <code>optional int32 ps = 1 [default = 20];</code>
+     *
+     * <pre>
+     *列表大小
+     * </pre>
+     */
+    public boolean hasPs() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 ps = 1 [default = 20];</code>
+     *
+     * <pre>
+     *列表大小
+     * </pre>
+     */
+    public int getPs() {
+      return ps_;
+    }
+
+    public static final int DAYBEFORE_FIELD_NUMBER = 2;
+    private java.lang.Object dayBefore_;
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    public boolean hasDayBefore() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    public java.lang.String getDayBefore() {
+      java.lang.Object ref = dayBefore_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          dayBefore_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string dayBefore = 2;</code>
+     *
+     * <pre>
+     *指定日期，若非空，则结果日期必定小于此日期
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDayBeforeBytes() {
+      java.lang.Object ref = dayBefore_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dayBefore_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      ps_ = 20;
+      dayBefore_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, ps_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDayBeforeBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, ps_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDayBeforeBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code poetry.DaySuggestListRequest}
+     *
+     * <pre>
+     *请求有推荐日期列表
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:poetry.DaySuggestListRequest)
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestListRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestListRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.Builder.class);
+      }
+
+      // Construct using com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        ps_ = 20;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        dayBefore_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestListRequest_descriptor;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest getDefaultInstanceForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.getDefaultInstance();
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest build() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest buildPartial() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest result = new com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.ps_ = ps_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.dayBefore_ = dayBefore_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest) {
+          return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest other) {
+        if (other == com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest.getDefaultInstance()) return this;
+        if (other.hasPs()) {
+          setPs(other.getPs());
+        }
+        if (other.hasDayBefore()) {
+          bitField0_ |= 0x00000002;
+          dayBefore_ = other.dayBefore_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.DaySuggestListRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int ps_ = 20;
+      /**
+       * <code>optional int32 ps = 1 [default = 20];</code>
+       *
+       * <pre>
+       *列表大小
+       * </pre>
+       */
+      public boolean hasPs() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 ps = 1 [default = 20];</code>
+       *
+       * <pre>
+       *列表大小
+       * </pre>
+       */
+      public int getPs() {
+        return ps_;
+      }
+      /**
+       * <code>optional int32 ps = 1 [default = 20];</code>
+       *
+       * <pre>
+       *列表大小
+       * </pre>
+       */
+      public Builder setPs(int value) {
+        bitField0_ |= 0x00000001;
+        ps_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 ps = 1 [default = 20];</code>
+       *
+       * <pre>
+       *列表大小
+       * </pre>
+       */
+      public Builder clearPs() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        ps_ = 20;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object dayBefore_ = "";
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public boolean hasDayBefore() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public java.lang.String getDayBefore() {
+        java.lang.Object ref = dayBefore_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            dayBefore_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDayBeforeBytes() {
+        java.lang.Object ref = dayBefore_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dayBefore_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public Builder setDayBefore(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        dayBefore_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public Builder clearDayBefore() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        dayBefore_ = getDefaultInstance().getDayBefore();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string dayBefore = 2;</code>
+       *
+       * <pre>
+       *指定日期，若非空，则结果日期必定小于此日期
+       * </pre>
+       */
+      public Builder setDayBeforeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        dayBefore_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:poetry.DaySuggestListRequest)
+    }
+
+    static {
+      defaultInstance = new DaySuggestListRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:poetry.DaySuggestListRequest)
+  }
+
+  public interface DaySuggestRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:poetry.DaySuggestRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 id = 1;</code>
+     *
+     * <pre>
+     *日期对应的唯一id
+     * </pre>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 1;</code>
+     *
+     * <pre>
+     *日期对应的唯一id
+     * </pre>
+     */
+    int getId();
+
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    boolean hasDay();
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    java.lang.String getDay();
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getDayBytes();
+  }
+  /**
+   * Protobuf type {@code poetry.DaySuggestRequest}
+   *
+   * <pre>
+   *请求指定日期id的诗歌, 若id非空，则查询id，否则查询日期，都为空则查询当日
+   * </pre>
+   */
+  public static final class DaySuggestRequest extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:poetry.DaySuggestRequest)
+      DaySuggestRequestOrBuilder {
+    // Use DaySuggestRequest.newBuilder() to construct.
+    private DaySuggestRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DaySuggestRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DaySuggestRequest defaultInstance;
+    public static DaySuggestRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DaySuggestRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DaySuggestRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              day_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DaySuggestRequest> PARSER =
+        new com.google.protobuf.AbstractParser<DaySuggestRequest>() {
+      public DaySuggestRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DaySuggestRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DaySuggestRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional int32 id = 1;</code>
+     *
+     * <pre>
+     *日期对应的唯一id
+     * </pre>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 1;</code>
+     *
+     * <pre>
+     *日期对应的唯一id
+     * </pre>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    public static final int DAY_FIELD_NUMBER = 2;
+    private java.lang.Object day_;
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    public boolean hasDay() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    public java.lang.String getDay() {
+      java.lang.Object ref = day_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          day_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string day = 2;</code>
+     *
+     * <pre>
+     *日期字符串
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getDayBytes() {
+      java.lang.Object ref = day_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        day_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      id_ = 0;
+      day_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getDayBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getDayBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code poetry.DaySuggestRequest}
+     *
+     * <pre>
+     *请求指定日期id的诗歌, 若id非空，则查询id，否则查询日期，都为空则查询当日
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:poetry.DaySuggestRequest)
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.class, com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.Builder.class);
+      }
+
+      // Construct using com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        day_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.internal_static_poetry_DaySuggestRequest_descriptor;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest getDefaultInstanceForType() {
+        return com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.getDefaultInstance();
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest build() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest buildPartial() {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest result = new com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.day_ = day_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest) {
+          return mergeFrom((com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest other) {
+        if (other == com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasDay()) {
+          bitField0_ |= 0x00000002;
+          day_ = other.day_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.cjl.poetryfan.proto.PoetryProto.DaySuggestRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 1;</code>
+       *
+       * <pre>
+       *日期对应的唯一id
+       * </pre>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       *
+       * <pre>
+       *日期对应的唯一id
+       * </pre>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       *
+       * <pre>
+       *日期对应的唯一id
+       * </pre>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       *
+       * <pre>
+       *日期对应的唯一id
+       * </pre>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object day_ = "";
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public boolean hasDay() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public java.lang.String getDay() {
+        java.lang.Object ref = day_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            day_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getDayBytes() {
+        java.lang.Object ref = day_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          day_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public Builder setDay(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        day_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public Builder clearDay() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        day_ = getDefaultInstance().getDay();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string day = 2;</code>
+       *
+       * <pre>
+       *日期字符串
+       * </pre>
+       */
+      public Builder setDayBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        day_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:poetry.DaySuggestRequest)
+    }
+
+    static {
+      defaultInstance = new DaySuggestRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:poetry.DaySuggestRequest)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_poetry_poetry_descriptor;
+    internal_static_poetry_Poetry_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_poetry_poetry_fieldAccessorTable;
+      internal_static_poetry_Poetry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_poetry_day_suggest_descriptor;
+    internal_static_poetry_DaySuggest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_poetry_day_suggest_fieldAccessorTable;
+      internal_static_poetry_DaySuggest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_poetry_DaySuggestList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_poetry_DaySuggestList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_poetry_DaySuggestList_IdAndDay_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_poetry_DaySuggestList_IdAndDay_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_poetry_DaySuggestListRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_poetry_DaySuggestListRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_poetry_DaySuggestRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_poetry_DaySuggestRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1900,12 +4724,17 @@ public final class poetryProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014poetry.proto\022\006poetry\"Y\n\006poetry\022\016\n\006auth" +
+      "\n\014poetry.proto\022\006poetry\"Y\n\006Poetry\022\016\n\006auth" +
       "or\030\001 \001(\t\022\r\n\005birth\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\017" +
-      "\n\007content\030\004 \001(\t\022\020\n\010head_img\030\005 \001(\t\"G\n\013day" +
-      "_suggest\022\n\n\002id\030\001 \002(\005\022\014\n\004date\030\002 \002(\t\022\036\n\006po" +
-      "etry\030\003 \002(\0132\016.poetry.poetryB\'\n\030com.cjl.po" +
-      "etryfan.domainB\013poetryProto"
+      "\n\007content\030\004 \001(\t\022\020\n\010head_img\030\005 \001(\t\"F\n\nDay" +
+      "Suggest\022\n\n\002id\030\001 \002(\005\022\014\n\004date\030\002 \002(\t\022\036\n\006poe" +
+      "try\030\003 \002(\0132\016.poetry.Poetry\"d\n\016DaySuggestL" +
+      "ist\022-\n\004days\030\001 \003(\0132\037.poetry.DaySuggestLis" +
+      "t.IdAndDay\032#\n\010IdAndDay\022\n\n\002id\030\001 \002(\005\022\013\n\003da" +
+      "y\030\002 \002(\t\":\n\025DaySuggestListRequest\022\016\n\002ps\030\001" +
+      " \001(\005:\00220\022\021\n\tdayBefore\030\002 \001(\t\",\n\021DaySugges" +
+      "tRequest\022\n\n\002id\030\001 \001(\005\022\013\n\003day\030\002 \001(\tB&\n\027com",
+      ".cjl.poetryfan.protoB\013PoetryProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1919,18 +4748,42 @@ public final class poetryProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_poetry_poetry_descriptor =
+    internal_static_poetry_Poetry_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_poetry_poetry_fieldAccessorTable = new
+    internal_static_poetry_Poetry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_poetry_poetry_descriptor,
+        internal_static_poetry_Poetry_descriptor,
         new java.lang.String[] { "Author", "Birth", "Title", "Content", "HeadImg", });
-    internal_static_poetry_day_suggest_descriptor =
+    internal_static_poetry_DaySuggest_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_poetry_day_suggest_fieldAccessorTable = new
+    internal_static_poetry_DaySuggest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_poetry_day_suggest_descriptor,
+        internal_static_poetry_DaySuggest_descriptor,
         new java.lang.String[] { "Id", "Date", "Poetry", });
+    internal_static_poetry_DaySuggestList_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_poetry_DaySuggestList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_poetry_DaySuggestList_descriptor,
+        new java.lang.String[] { "Days", });
+    internal_static_poetry_DaySuggestList_IdAndDay_descriptor =
+      internal_static_poetry_DaySuggestList_descriptor.getNestedTypes().get(0);
+    internal_static_poetry_DaySuggestList_IdAndDay_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_poetry_DaySuggestList_IdAndDay_descriptor,
+        new java.lang.String[] { "Id", "Day", });
+    internal_static_poetry_DaySuggestListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_poetry_DaySuggestListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_poetry_DaySuggestListRequest_descriptor,
+        new java.lang.String[] { "Ps", "DayBefore", });
+    internal_static_poetry_DaySuggestRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_poetry_DaySuggestRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_poetry_DaySuggestRequest_descriptor,
+        new java.lang.String[] { "Id", "Day", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

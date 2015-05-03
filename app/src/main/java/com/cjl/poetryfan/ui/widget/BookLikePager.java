@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -38,31 +37,14 @@ public class BookLikePager extends ViewPager {
         Drawable getItemViewBackground();
     }
 
-    private class EdgeProperties {
-        float x;
-        float y;
-        int alpha;
-        int width;
-        int height;
-
-        @Override
-        public String toString() {
-            return "EdgeProperties{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    ", alpha=" + alpha +
-                    ", width=" + width +
-                    ", height=" + height +
-                    '}';
-        }
-    }
-
     private int mMaxEdgeWidth;
     private int mMaxEdgeCount = 3;
     private Drawable mEdgeDrawable;
 
     private float mItemEdgeWidth;
     private float mItemScaleHeight;
+    private float mMinAlpha = 0.5f;
+    private float mAlphaItem;
     List<EdgeProperties> mExtraEdges;
 
 
@@ -80,12 +62,11 @@ public class BookLikePager extends ViewPager {
         float density = context.getResources().getDisplayMetrics().density;
 
         mMaxEdgeWidth = (int) (density * 25 + .5);
+        mItemScaleHeight = (int) (density * 15 + .5);
 
         setPageTransformer(false, null); // set the default PageTransformer
         setClipToPadding(false);
-        resetPadding();
-
-        Log.d("---", "mItemEdgeWidth=" + mItemEdgeWidth + "; pad=" + getPaddingLeft());
+        resetSize();
     }
 
     public void setMaxPageEdgeCount(int count) {
@@ -93,19 +74,29 @@ public class BookLikePager extends ViewPager {
             throw new IllegalArgumentException("count can't be less than 2");
         }
         this.mMaxEdgeCount = count;
-        resetPadding();
+        resetSize();
     }
 
     public void setMaxPageEdgeWidth(int width) {
         mMaxEdgeWidth = width;
-        resetPadding();
+        resetSize();
     }
 
-    private void resetPadding() {
+    public void setItemScaleHeight(int height) {
+        mItemScaleHeight = height;
+        invalidate();
+    }
+
+    public void setMinAlpha(float alpha) {
+        mMinAlpha = alpha;
+        resetSize();
+    }
+
+    private void resetSize() {
         int padding = (int) (mMaxEdgeWidth * (mMaxEdgeCount + 1) / mMaxEdgeCount / 2f);
-        setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
         mItemEdgeWidth = mMaxEdgeWidth * 1f / mMaxEdgeCount;
-        mItemScaleHeight = mItemEdgeWidth * 2;
+        mAlphaItem = (1 - mMinAlpha) / (mMaxEdgeCount - 1);
+        setPadding(padding, getPaddingTop(), padding, getPaddingBottom());
     }
 
     @Override
@@ -153,9 +144,9 @@ public class BookLikePager extends ViewPager {
         view.setScaleY(calcScaleY(view, idx, offset));
         view.setAlpha(calcAlpha(idx, offset));
 
-//        if (idx == getCurrentItem()) {
-//            setExtraEdge(view, idx, offset);
-//        }
+        if (idx == getCurrentItem()) {
+            setExtraEdge(view, idx, offset);
+        }
     }
 
     private void setExtraEdge(View view, int cIdx, float offset) {
@@ -165,12 +156,12 @@ public class BookLikePager extends ViewPager {
             mExtraEdges.clear();
         }
 
-        if (cIdx > mMaxEdgeCount - 2) {
-            int count = cIdx - mMaxEdgeCount + 2;
-            int start = cIdx - 2;
+        if (cIdx > 1) {
+            int count = Math.min(mMaxEdgeCount - 2, cIdx - 1);
+            int start = cIdx - count - 1;
             if (offset > 0 && cIdx - mMaxEdgeCount >= 0) {
                 count++;
-                start = start - 1;
+                start--;
             }
 
             int idx;
@@ -190,7 +181,11 @@ public class BookLikePager extends ViewPager {
                     ep.y = (view.getHeight() - height) / 2;
                 } else {
                     from = getDefaultX(idx, cIdx);
-                    to = getDefaultX(idx + 1, cIdx);
+                    if (cIdx < mMaxEdgeCount) {
+                        to = getDefaultX(idx, cIdx - 1);
+                    } else {
+                        to = getDefaultX(idx + 1, cIdx);
+                    }
                     ep.x = from + (to - from) * Math.abs(offset);
 
                     from = view.getHeight() - mItemScaleHeight * (cIdx - idx);
@@ -202,59 +197,36 @@ public class BookLikePager extends ViewPager {
                 ep.width = view.getWidth();
                 ep.height = (int) height;
 
-                ep.alpha = (int) (calcAlpha(idx, offset) * 255);
+                from = 1 - mAlphaItem * (cIdx - idx);
+                to = from + mAlphaItem;
+                ep.alpha = (int) ((from + (to - from) * Math.abs(offset)) * 255);
 
                 mExtraEdges.add(ep);
             }
-
-            Log.d("---", mExtraEdges.toString());
         }
     }
 
     private float calcAlpha(int idx, float offset) {
         final int cIdx = getCurrentItem();
-        float from, to;
-        float alphaDecrease = 0.2f;
 
-        if (idx > cIdx) {
-            return 1;
-        } else if (idx == cIdx) {
-            if (offset <= 0) {
-                from = 1;
-                to = 1 - alphaDecrease;
-            } else {
-                return 1;
-            }
-        } else if (cIdx - idx == 1) {
-            from = 1 - alphaDecrease * (cIdx - idx - 1);
-            to = from - alphaDecrease;
-        } else {
-            return 1;
+        if ((idx == cIdx && offset <= 0) || cIdx - idx == 1) {
+            float from = 1;
+            float to = from - mAlphaItem;
+            return from + (to - from) * Math.abs(offset);
         }
-        return from + (to - from) * Math.abs(offset);
+        return 1;
     }
 
     private float calcScaleY(View view, int idx, float offset) {
         final int cIdx = getCurrentItem();
-        float from, to;
         final int viewH = view.getHeight();
 
-        if (idx > cIdx) {
-            return 1;
-        } else if (idx == cIdx) {
-            if (offset <= 0) {
-                from = viewH;
-                to = viewH - mItemScaleHeight;
-            } else {
-                return 1;
-            }
-        } else if (cIdx - idx == 1) {
-            from = viewH - mItemScaleHeight * (cIdx - idx - 1);
-            to = from - mItemScaleHeight;
-        } else {
-            return 1;
+        if ((idx == cIdx && offset <= 0) || cIdx - idx == 1) {
+            float from = viewH;
+            float to = from - mItemScaleHeight;
+            return (from + (to - from) * Math.abs(offset)) / viewH;
         }
-        return (from + (to - from) * Math.abs(offset)) / viewH;
+        return 1;
     }
 
     /**
@@ -268,22 +240,26 @@ public class BookLikePager extends ViewPager {
         float from, to;
 
         if (idx == cIdx + 1) {
+            if (offset >= 1) {
+                return getPaddingRight();
+            }
             from = getDefaultX(idx, cIdx + 1);
             to = getDefaultX(idx, cIdx);
         } else if (idx > cIdx + 1) {
-            return -getPaddingRight();
+            return getPaddingLeft();
         } else if (idx == cIdx) {
             if (offset <= 0) {
                 from = getDefaultX(idx, cIdx);
                 to = getDefaultX(idx, cIdx + 1);
             } else {
                 from = getDefaultX(idx, cIdx);
-                to = getDefaultX(idx, cIdx + 1);
+                to = getDefaultX(idx + 1, cIdx);
             }
         } else if (cIdx - idx == 1) {
-            if(offset < -1) {
+            if (offset < -1) {
                 from = getDefaultX(idx, cIdx);
                 to = getDefaultX(idx, cIdx + 1);
+                offset++;
             } else {
                 from = getDefaultX(idx, idx);
                 to = getDefaultX(idx, idx + 1);
@@ -291,15 +267,9 @@ public class BookLikePager extends ViewPager {
         } else {
             return getPaddingLeft();
         }
-//        if(offset < -1 || offset > 1){
-//            offset = Math.abs(offset) - (int) Math.abs(offset);
-//        }
 
         float toX = from + (to - from) * Math.abs(offset);
-        float res = toX - view.getLeft() + getScrollX();
-
-        Log.d("---", idx + "->from=" + from + ";\tto=" + to + ";\ttoX=" + toX + ";\toffset=" + offset);
-        return res;
+        return toX - view.getLeft() + getScrollX();
     }
 
     /**
@@ -315,8 +285,9 @@ public class BookLikePager extends ViewPager {
         } else if (ci - idx > mMaxEdgeCount) { // 相隔超过最大页数，在屏幕左边
             return -getWidth() * (ci - idx - mMaxEdgeCount + 1);
         } else if (ci < mMaxEdgeCount - 1) {//小于最大页数，所有页一起居中显示，计算偏差
-            float delta = getPaddingLeft() - (ci + 2) * mItemEdgeWidth / 2;
-            return delta + idx * mItemEdgeWidth;
+//            float delta = getPaddingLeft() - (ci + 2) * mItemEdgeWidth / 2;
+//            return delta + (idx + 1) * mItemEdgeWidth;
+            return getPaddingLeft() + (idx - ci / 2f) * mItemEdgeWidth;
         } else {
             return (mMaxEdgeCount + idx - ci) * mItemEdgeWidth;
         }
@@ -326,9 +297,8 @@ public class BookLikePager extends ViewPager {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-//        mEdgeDrawable = new ColorDrawable(Color.BLACK);
         if (getAdapter() != null) {
-//            drawEdge(canvas);
+            drawEdge(canvas);
         }
     }
 
@@ -347,5 +317,15 @@ public class BookLikePager extends ViewPager {
             canvas.restore();
         }
         canvas.restoreToCount(clipSaveCount);
+    }
+
+
+
+    private class EdgeProperties {
+        float x;
+        float y;
+        int alpha;
+        int width;
+        int height;
     }
 }
